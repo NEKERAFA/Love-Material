@@ -1,4 +1,6 @@
-local _material_ext_iconbutton = function (material, icon, options)
+return function ( material )
+
+local _material_ext_newiconbutton = function (icon, options)
     -- Creates the new object
     local _object = {
         -- icon
@@ -81,3 +83,5 @@ local _material_ext_iconbutton = function (material, icon, options)
 end
 
 return _material_ext_iconbutton
+
+end

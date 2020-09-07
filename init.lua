@@ -1,5 +1,5 @@
 local _material = {
-    VERSION      = 'Mäterial 1.0.0',
+    _VERSION      = 'Mäterial 1.0.0',
     _DESCRIPTION = 'Immediate Mode UI library for LÖVE that implements the Material Design specs.',
     _URL         = 'https://github.com/NEKERAFA/Love-Material',
     _LICENSE     = [[
@@ -45,37 +45,34 @@ local _material = {
     ]]
 }
 
-local BASE = ...
+-- Gets the material require path
+_material._BASE = ...
 
--- Create color module
-_material.colors = {}
+-- Gets the core require path
+_material._CORE = _material._BASE .. ".core"
 
--- Loads palette
-local _material_colors_palette = require (BASE .. ".constants.colors")
-_material.colors.palette = _material_colors_palette
+-- Gets the constants require path
+_material._CONSTANTS = _material._BASE .. ".constants"
 
--- Create icon module
-_material.icons = {}
+-- Gets the components require path
+_material._COMPONENTS = _material._BASE .. ".components"
 
--- Loads codepoints
-local _material_icons_codepoints = require (BASE .. ".constants.icons")
-_material.icons.codepoints = _material_icons_codepoints
+-- Gets the extension require path
+_material._EXTENSIONS = _material._BASE .. ".ext"
 
--- Create button module
-_material.buttons = {}
+-- Gets the assets directory
+_material._ASSETS = string.gsub(_material._BASE, "%.", "/") .. "/assets"
 
--- Loads icon button draw function
-local _material_buttons_iconbutton = require (BASE .. ".components.iconbutton")
-_material.buttons.iconbutton = _material_buttons_iconbutton
+-- Loads theme module
+local _material_theme = require (_material._CORE .. ".theme")
+_material.theme = _material_theme(_material)
 
--- Loads utils module
-_material.utils = require (BASE .. ".utils")
+-- Loads icon module
+local _material_icons = require (_material._CORE .. ".icons")
+_material.icons = _material_icons(_material)
 
--- Create extension module
-_material.ext = {}
-
--- Loads icon button object
-local _material_ext_newiconbutton = require (BASE .. ".extensions.iconbutton")
-_material.ext.newIconButton = _material_ext_newiconbutton
+-- Loads buttons module
+local _material_buttons = require (_material._CORE .. ".buttons")
+_material.buttons = _material_buttons(_material)
 
 return _material
