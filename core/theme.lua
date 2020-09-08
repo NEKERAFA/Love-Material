@@ -5,7 +5,7 @@
 return function ( material )
 
 -- Loads color palette
-local _material_theme_colorpalette = require (material._CONSTANTS .. ".colorpalette")
+local _material_theme_colorpalette = require (material._CONSTANTS .. ".colors")
 
 -- Sets color theme
 local _material_theme_colorprimary          = _material_theme_colorpalette["blue"]["500"]
@@ -20,7 +20,8 @@ local _material_theme_colorsurface          = _material_theme_colorpalette["whit
 local _material_theme_coloronsurface        = _material_theme_colorpalette["black"]
 local _material_theme_colorerror            = _material_theme_colorpalette["red"]["900"]
 local _material_theme_coloronerror          = _material_theme_colorpalette["white"]
-local _material_theme_opacityfocused        = 0.87
+local _material_theme_colorfocused          = _material_theme_colorpalette["blue"]["300"]
+local _material_theme_opacityhover          = 0.87
 local _material_theme_opacityactive         = 0.54
 local _material_theme_opacityinactive       = 0.38
 local _material_theme_opacityripple         = 0.2
@@ -74,6 +75,15 @@ local function _material_theme_getonprimary ()
 end
 
 ---
+-- Sets the color when drawn ripple on primary color
+-- @param color A color table
+local function _material_theme_getrippleonprimary ( color )
+    local color = _material_theme_getonprimary()
+    color[4] = (color[4] or 1) * _material_theme_opacityripple
+    return color
+end
+
+---
 -- Sets the secondary color
 -- @param color A color table
 local function _material_theme_setsecondary ( color )
@@ -85,6 +95,33 @@ end
 -- @return The current color
 local function _material_theme_getsecondary ()
     return { unpack(_material_theme_colorsecondary) }
+end
+
+---
+-- Gets the color when drawn hover items with the secondary color
+-- @return The current color
+local function _material_theme_gethoversecondary ()
+    local color = _material_theme_getsecondary()
+    color[4] = (color[4] or 1) * _material_theme_opacityhover
+    return color
+end
+
+---
+-- Gets the color when drawn active items with the secondary color
+-- @return The current color
+local function _material_theme_getactivesecondary ()
+    local color = _material_theme_getsecondary()
+    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    return color
+end
+
+---
+-- Gets the color when drawn inactive items with the secondary color
+-- @return The current color
+local function _material_theme_getinactivesecondary ()
+    local color = _material_theme_getsecondary()
+    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    return color
 end
 
 ---
@@ -113,6 +150,42 @@ end
 -- @return The current color
 local function _material_theme_getonsecondary ()
     return { unpack(_material_theme_coloronsecondary) }
+end
+
+---
+-- Sets the color when drawn ripple on secondary color
+-- @param color A color table
+local function _material_theme_getrippleonsecondary ( color )
+    local color = _material_theme_getonsecondary()
+    color[4] = (color[4] or 1) * _material_theme_opacityripple
+    return color
+end
+
+---
+-- Gets the color when drawn hover items on top of the secondary color
+-- @return The current color
+local function _material_theme_gethoveronsecondary ()
+    local color = _material_theme_getonsecondary()
+    color[4] = (color[4] or 1) * _material_theme_opacityhover
+    return color
+end
+
+---
+-- Gets the color when drawn active items on top of the secondary color
+-- @return The current color
+local function _material_theme_getactiveosecondary ()
+    local color = _material_theme_getonsecondary()
+    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    return color
+end
+
+---
+-- Gets the color when drawn inactive items on top of the secondary color
+-- @return The current color
+local function _material_theme_getinactiveonsurface ()
+    local color = _material_theme_getonsecondary()
+    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    return color
 end
 
 ---
@@ -172,6 +245,42 @@ local function _material_theme_getonsurface ()
 end
 
 ---
+-- Sets the color when drawn ripple on surface color
+-- @param color A color table
+local function _material_theme_getrippleonsurface ( color )
+    local color = _material_theme_getonsurface()
+    color[4] = (color[4] or 1) * _material_theme_opacityripple
+    return color
+end
+
+---
+-- Gets the color when drawn hover items on top of the surface color
+-- @return The current color
+local function _material_theme_gethoveronsurface ()
+    local color = _material_theme_getonsurface()
+    color[4] = (color[4] or 1) * _material_theme_opacityhover
+    return color
+end
+
+---
+-- Gets the color when drawn active items on top of the surface color
+-- @return The current color
+local function _material_theme_getactiveonsurface ()
+    local color = _material_theme_getonsurface()
+    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    return color
+end
+
+---
+-- Gets the color when drawn inactive items on top of the surface color
+-- @return The current color
+local function _material_theme_getinactiveonsurface ()
+    local color = _material_theme_getonsurface()
+    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    return color
+end
+
+---
 -- Sets the error color
 -- @param color A color table
 local function _material_theme_seterror ( color )
@@ -202,17 +311,22 @@ end
 ---
 -- Sets the opacity when drawn on focused items
 -- @param opacity A opacity value
-local function _material_theme_setfocused ( opacity )
-    _material_theme_opacityfocused = opacity
+local function _material_theme_setfocused ( color )
+    _material_theme_colorfocused = color
 end
 
 ---
 -- Gets the color when drawn on focused items
 -- @return The current color
 local function _material_theme_getfocused ()
-    local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityfocused
-    return { unpack(color) }
+    return { unpack(_material_theme_colorfocused) }
+end
+
+---
+-- Sets the opacity when drawn on hover items
+-- @param opacity A opacity value
+local function _material_theme_sethover ( opacity )
+    _material_theme_opacityhover = opacity
 end
 
 ---
@@ -223,28 +337,10 @@ local function _material_theme_setactive ( opacity )
 end
 
 ---
--- Gets the color when drawn on active items
--- @return The current color
-local function _material_theme_getactive ()
-    local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityactive
-    return { unpack(color) }
-end
-
----
 -- Sets the opacity when drawn on inactive items
 -- @param opacity A opacity value
 local function _material_theme_setinactive ( opacity )
     _material_theme_opacityinactive = opacity
-end
-
----
--- Gets the color when drawn on inactive items
--- @return The current color
-local function _material_theme_getinactive ()
-    local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityinactive
-    return { unpack(color) }
 end
 
 ---
@@ -254,70 +350,48 @@ local function _material_theme_setripple ( opacity )
     _material_theme_opacityripple = opacity
 end
 
----
--- Sets the color ripple on primary elements
--- @param color A color table
-local function _material_theme_getprimaryripple ( color )
-    local color = _material_theme_getonprimary()
-    color[4] = (color[4] or 1) * _material_theme_opacityripple
-    return { unpack(color) }
-end
-
----
--- Sets the color ripple on secondary elements
--- @param color A color table
-local function _material_theme_getsecondaryripple ( color )
-    local color = _material_theme_getonsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityripple
-    return { unpack(color) }
-end
-
----
--- Sets the color ripple on surface elements
--- @param color A color table
-local function _material_theme_getsurfaceripple ( color )
-    local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityripple
-    return { unpack(color) }
-end
-
 return {
     palette = _material_theme_colorpalette,
 
-    setPrimary          = _material_theme_setprimary,
-    getPrimary          = _material_theme_getprimary,
-    setPrimaryVariant   = _material_theme_setprimaryvariant,
-    getPrimaryVariant   = _material_theme_getprimaryvariant,
-    setOnPrimary        = _material_theme_setonprimary,
-    getOnPrimary        = _material_theme_getonprimary,
-    setSecondary        = _material_theme_setsecondary,
-    getSecondary        = _material_theme_getsecondary,
-    setSecondaryVariant = _material_theme_setsecondaryvariant,
-    getSecondaryVariant = _material_theme_getsecondaryvariant,
-    setOnSecondary      = _material_theme_setonsecondary,
-    getOnSecondary      = _material_theme_getonsecondary,
-    setBackground       = _material_theme_setbackground,
-    getBackground       = _material_theme_getbackground,
-    setOnBackground     = _material_theme_setonbackground,
-    getOnBackground     = _material_theme_getonbackground,
-    setSurface          = _material_theme_setsurface,
-    getSurface          = _material_theme_getsurface,
-    setOnSurface        = _material_theme_setonsurface,
-    getOnSurface        = _material_theme_getonsurface,
-    setError            = _material_theme_seterror,
-    getError            = _material_theme_geterror,
-    setOnError          = _material_theme_setonerror,
-    getOnError          = _material_theme_getonerror,
-    setFocused          = _material_theme_setfocused,
-    getFocused          = _material_theme_getfocused,
-    setActive           = _material_theme_setactive,
-    getActive           = _material_theme_getactive,
-    setInactive         = _material_theme_setinactive,
-    getInactive         = _material_theme_getinactive,
-    setRipple           = _material_theme_setripple,
-    getPrimaryRipple    = _material_theme_getprimaryripple,
-    getSecondaryRipple  = _material_theme_getsecondaryripple,
-    getSurfaceRipple    = _material_theme_getsurfaceripple
+    setPrimary           = _material_theme_setprimary,
+    getPrimary           = _material_theme_getprimary,
+    setPrimaryVariant    = _material_theme_setprimaryvariant,
+    getPrimaryVariant    = _material_theme_getprimaryvariant,
+    setOnPrimary         = _material_theme_setonprimary,
+    getOnPrimary         = _material_theme_getonprimary,
+    getRippleOnPrimary   = _material_theme_getrippleonprimary,
+    setSecondary         = _material_theme_setsecondary,
+    getSecondary         = _material_theme_getsecondary,
+    getHoverSecondary    = _material_theme_gethoversecondary,
+    getActiveSecondary   = _material_theme_getactivesecondary,
+    getInactiveecondary  = _material_theme_getinactivesecondary,
+    setSecondaryVariant  = _material_theme_setsecondaryvariant,
+    getSecondaryVariant  = _material_theme_getsecondaryvariant,
+    setOnSecondary       = _material_theme_setonsecondary,
+    getOnSecondary       = _material_theme_getonsecondary,
+    getRippleOnSecondary = _material_theme_getrippleonsecondary,
+    setBackground        = _material_theme_setbackground,
+    getBackground        = _material_theme_getbackground,
+    setOnBackground      = _material_theme_setonbackground,
+    getOnBackground      = _material_theme_getonbackground,
+    setSurface           = _material_theme_setsurface,
+    getSurface           = _material_theme_getsurface,
+    setOnSurface         = _material_theme_setonsurface,
+    getOnSurface         = _material_theme_getonsurface,
+    getRippleOnSurface   = _material_theme_getrippleonsurface,
+    getHoverOnSurface    = _material_theme_gethoveronsurface,
+    getActiveOnSurface   = _material_theme_getactiveonsurface,
+    getInactiveOnSurface = _material_theme_getinactiveonsurface,
+    setError             = _material_theme_seterror,
+    getError             = _material_theme_geterror,
+    setOnError           = _material_theme_setonerror,
+    getOnError           = _material_theme_getonerror,
+    setFocused           = _material_theme_setfocused,
+    getFocused           = _material_theme_getfocused,
+    setHover             = _material_theme_sethover,
+    setActive            = _material_theme_setactive,
+    setInactive          = _material_theme_setinactive,
+    setRipple            = _material_theme_setripple,
 }
 
 end
