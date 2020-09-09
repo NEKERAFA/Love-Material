@@ -55,17 +55,36 @@ local function _material_buttons_size_setsize ( size )
 end
 
 ---
+-- Draws a button
+-- @function button
+-- @param icon The icon to draw
+-- @param x The position in x-axis
+-- @param y The position in y-axis
+-- @param[opt] ripple_x The position of the ripple in the local x-axis
+-- @param[opt] ripple_y The position of the ripple in the local y-axis
+-- @param[opt] ripple_radius The radius of the ripple
+-- @param[opt] variant The type of the icon: "contained", "outlined" or "text"
+-- @param[opt] width The width of the icon
+-- @param[opt] inactive Shows the icon as disabled
+-- @param[opt] hover Shows the icon as hover
+-- @param[opt] focused Shows the outlined of the focused button
+local function _material_buttons_button ( content, x, y, ripple_x, ripple_y, ripple_radius, variant, width, inactive, hover, focused )
+    local callback = _material_components_button(material)
+    callback(content, x, y, ripple_x, ripple_y, ripple_radius, variant, width, inactive, hover, focused)
+end
+
+---
 -- Draws a icon button
 -- @function iconbutton
 -- @param icon The icon to draw
 -- @param x The position in x-axis
 -- @param y The position in y-axis
--- @param[opt=material.buttons.getPixelSize()] ripple_x The position of the ripple in the local x-axis
--- @param[opt=material.buttons.getPixelSize()] ripple_y The position of the ripple in the local y-axis
--- @param[opt=0] ripple_radius The radius of the ripple
--- @param[opt=false] disabled Shows the icon as disabled
--- @param[opt=false] hover Shows the icon as hover
--- @param[opt=false] focused Shows the outlined of the focused button
+-- @param[opt] ripple_x The position of the ripple in the local x-axis
+-- @param[opt] ripple_y The position of the ripple in the local y-axis
+-- @param[opt] ripple_radius The radius of the ripple
+-- @param[opt] inactive Shows the icon as disabled
+-- @param[opt] hover Shows the icon as hover
+-- @param[opt] focused Shows the outlined of the focused button
 local function _material_buttons_iconbutton ( icon, x, y, ripple_x, ripple_y, ripple_radius, inactive, hover, focused )
     local callback = _material_components_iconbutton(material)
     callback(icon, x, y, ripple_x, ripple_y, ripple_radius, inactive, hover, focused)
@@ -75,6 +94,7 @@ return {
     getSize      = _material_buttons_getsize,
     getPixelSize = _material_buttons_getpixelsize,
     getSize      = _material_buttons_getsize,
+    button       = _material_buttons_button,
     iconButton   = _material_buttons_iconbutton,
 }
 

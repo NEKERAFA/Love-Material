@@ -22,28 +22,28 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
     -- Button color
     local _backgroundColor, _outlinedColor, _color, _inactiveColor, _hoverColor, _rippleColor
 
-    variant = variable or "contained"
+    variant = variant or "contained"
     if variant == "contained" then
         _backgroundColor = material.theme.getSecondary()
         _outlinedColor   = false
         _color           = material.theme.getActiveOnSecondary()
-        _inactiveColor   = material.theme.getInativeOnSecondary()
+        _inactiveColor   = material.theme.getInactiveOnSecondary()
         _hoverColor      = material.theme.getHoverOnSecondary()
         _rippleColor     = material.theme.getRippleOnSecondary()
     elseif variant == "outlined" then
-        _backgroundColor = material.theme.getSurface()
+        _backgroundColor = false
         _outlinedColor   = material.theme.getSecondary()
         _color           = material.theme.getActiveSecondary()
         _inactiveColor   = material.theme.getInactiveSecondary()
         _hoverColor      = material.theme.getHoverSecondary()
-        _rippleColor     = material.theme.getRippleOnSurface()
+        _rippleColor     = material.theme.getRippleSecondary()
     elseif variant == "text" then
-        _backgroundColor = material.theme.getSurface()
+        _backgroundColor = false
         _outlinedColor   = false
         _color           = material.theme.getActiveSecondary()
         _inactiveColor   = material.theme.getInactiveSecondary()
         _hoverColor      = material.theme.getHoverSecondary()
-        _rippleColor     = material.theme.getRippleOnSurface()
+        _rippleColor     = material.theme.getRippleSecondary()
     end
 
     local _focusedColor    = material.theme.getFocused()
@@ -51,14 +51,6 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
     -- Gets button font
     local _buttonFont = material.texts.getBody("sans")
     local _buttonIconFont = material.icons.getButtonFont()
-
-    -- Checks optional args
-    ripple_x = ripple_x or _radius
-    ripple_y = ripple_y or _radius
-    ripple_radius = ripple_radius or 0
-    inactive = inactive or false
-    hover = hover or false
-    focused = focused or false
     
     -- Checks width argument
     local _offset
@@ -85,30 +77,40 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
     local _dx = _width / 2 - width / 2
     local _height = material.buttons.getPixelSize()
 
+    -- Checks optional args
+    ripple_x = ripple_x or _width / 2
+    ripple_y = ripple_y or _height / 2
+    ripple_radius = ripple_radius or 0
+    inactive = inactive or false
+    hover = hover or false
+    focused = focused or false
+
     local _love_color = { love.graphics.getColor() }
     local _love_font = love.graphics.getFont()
 
     -- Draws the focus
-    if _focusedColor then
+    if focused then
         love.graphics.setColor(_focusedColor)
         love.graphics.rectangle("line", x-1, y-1, _width+2, _height+2, 4, 4)
     end
 
     -- Draws the background
-    love.graphics.setColor(_backgroundColor)
-    love.graphics.rectangle("fill", x, y, _width, _height, 4, 4)
+    if _backgroundColor then
+        love.graphics.setColor(_backgroundColor)
+        love.graphics.rectangle("fill", x, y, _width, _height, 4, 4)
+    end
 
     -- Draws the outlined
     if _outlinedColor then
         love.graphics.setColor(_outlinedColor)
-        love.graphics.rectangle("fill", x, y, _width, _height, 4, 4)
+        love.graphics.rectangle("line", x, y, _width, _height, 4, 4)
     end
 
     -- Draws the ripple
     love.graphics.stencil(_material_buttons_button_stencil(x, y, _width, _height))
     love.graphics.setStencilTest("greater", 0)
     love.graphics.setColor(_rippleColor)
-    love.graphics.circle("fill", x + ripple_x, y + ripple_y, ripple_radius * _radius * 2)
+    love.graphics.circle("fill", x + ripple_x, y + ripple_y, ripple_radius * _width * 2)
     love.graphics.setStencilTest()
 
     -- Draws the icon and the text
@@ -118,8 +120,8 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
 
     if type(_icon) == "string" then
         love.graphics.setFont(_buttonIconFont)
-        love.graphics.print(material.icons.codepoints[_icon], x + dx, y + _height / 2 - material.icons.getButtonSize() / 2)
-        dx = dx + material.icon.getButtonSize() + 8
+        love.graphics.print(material.icons.codepoints[_icon], x + _dx, y + _height / 2 - material.icons.getButtonSize() / 2)
+        _dx = _dx + material.icon.getButtonSize() + 8
     elseif _icon ~= nil then
         _iconWidth = material.icons.getButtonSize()
         _iconHeight = material.icons.getButtonSize()
@@ -128,15 +130,17 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
             _iconHeight = _icon:getWidth() * material.icons.getButtonSize() / _icon:getHeight()
         end
 
-        love.graphics.draw(_icon, x + dx, y + _height / 2 - _iconHeight / 2, 0, _iconWidth / _icon:getWidth(), _iconHeight / _icon:getHeight())
-        dx = dx + material.icon.getButtonSize() + 8
+        love.graphics.draw(_icon, x + _dx, y + _height / 2 - _iconHeight / 2, 0, _iconWidth / _icon:getWidth(), _iconHeight / _icon:getHeight())
+        _dx = _dx + material.icon.getButtonSize() + 8
     end
 
     love.graphics.setFont(_buttonFont)
-    love.graphics.print(_text, x + dx, y + _height / 2 - _buttonFont:getHeight() / 2)
+    love.graphics.print(_text, x + _dx, y + _height / 2 - _buttonFont:getHeight() / 2)
 
     love.graphics.setColor(_love_color)
     love.graphics.setFont(_love_font)
 end
+
+return _material_buttons_button
 
 end

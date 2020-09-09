@@ -71,6 +71,10 @@ _material.theme = _material_theme(_material)
 local _material_icons = require (_material._CORE .. ".icons")
 _material.icons = _material_icons(_material)
 
+-- Loads texts module
+local _material_texts = require (_material._CORE .. ".texts")
+_material.texts = _material_texts(_material)
+
 -- Loads buttons module
 local _material_buttons = require (_material._CORE .. ".buttons")
 _material.buttons = _material_buttons(_material)

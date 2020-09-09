@@ -1,0 +1,1090 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Mäterial</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/material.buttons.html">material.buttons</a></li>
+  <li><a href="../modules/material.icons.html">material.icons</a></li>
+  <li><a href="../modules/material.texts.html">material.texts</a></li>
+  <li><strong>material.theme</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>material.theme</code></h1>
+<p>Theme manipulation</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#setPrimary">setPrimary (color)</a></td>
+	<td class="summary">Sets the primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getPrimary">getPrimary ()</a></td>
+	<td class="summary">Gets the tonal variation of the primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setPrimaryVariant">setPrimaryVariant (color)</a></td>
+	<td class="summary">Sets the tonal variation of the primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getPrimaryVariant">getPrimaryVariant ()</a></td>
+	<td class="summary">Gets the primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setOnPrimary">setOnPrimary (color)</a></td>
+	<td class="summary">Sets the color when drawn on top of the primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnPrimary">getOnPrimary ()</a></td>
+	<td class="summary">Sets the color when drawn on top of the primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getRippleOnPrimary">getRippleOnPrimary (color)</a></td>
+	<td class="summary">Sets the color when drawn ripple on primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setSecondary">setSecondary (color)</a></td>
+	<td class="summary">Sets the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSecondary">getSecondary ()</a></td>
+	<td class="summary">Gets the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getRippleSecondary">getRippleSecondary (color)</a></td>
+	<td class="summary">Sets the color when drawn ripple on the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getHoverSecondary">getHoverSecondary ()</a></td>
+	<td class="summary">Gets the color when drawn hover items on the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getActiveSecondary">getActiveSecondary ()</a></td>
+	<td class="summary">Gets the color when drawn active items on the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getInactiveSecondary">getInactiveSecondary ()</a></td>
+	<td class="summary">Gets the color when drawn inactive items on the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setSecondaryVariant">setSecondaryVariant (color)</a></td>
+	<td class="summary">Sets the tonal variation of the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSecondaryVariant">getSecondaryVariant ()</a></td>
+	<td class="summary">Gets the tonal variation of the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setOnSecondary">setOnSecondary (color)</a></td>
+	<td class="summary">Sets the color when drawn on top of the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnSecondary">getOnSecondary ()</a></td>
+	<td class="summary">Gets the color when drawn on top of the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getRippleOnSecondary">getRippleOnSecondary (color)</a></td>
+	<td class="summary">Sets the color when drawn ripple on secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getHoverOnSecondary">getHoverOnSecondary ()</a></td>
+	<td class="summary">Gets the color when drawn hover items on top of the secondary colorcolor</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getActiveOnSecondary">getActiveOnSecondary ()</a></td>
+	<td class="summary">Gets the color when drawn active items on top of the secondary colorcolor</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getInactiveOnSecondary">getInactiveOnSecondary ()</a></td>
+	<td class="summary">Gets the color when drawn inactive items on top of the secondary colorcolor</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setBackground">setBackground (color)</a></td>
+	<td class="summary">Sets the background color appears behind scrollable contentcolor</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getBackground">getBackground ()</a></td>
+	<td class="summary">Gets the background color appears behind scrollable content</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setOnBackground">setOnBackground (color)</a></td>
+	<td class="summary">Sets the color when drawn on top of the background color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnBackground">getOnBackground ()</a></td>
+	<td class="summary">Gets the color when drawn on top of the background color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setSurface">setSurface (color)</a></td>
+	<td class="summary">Sets the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSurface">getSurface ()</a></td>
+	<td class="summary">Gets the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setOnSurface">setOnSurface (color)</a></td>
+	<td class="summary">Sets the color when drawn on top of the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnSurface">getOnSurface ()</a></td>
+	<td class="summary">Gets the color when drawn on top of the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getRippleOnSurface">getRippleOnSurface (color)</a></td>
+	<td class="summary">Sets the color when drawn ripple on surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getHoverOnSurface">getHoverOnSurface ()</a></td>
+	<td class="summary">Gets the color when drawn hover items on top of the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getActiveOnSurface">getActiveOnSurface ()</a></td>
+	<td class="summary">Gets the color when drawn active items on top of the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getInactiveOnSurface">getInactiveOnSurface ()</a></td>
+	<td class="summary">Gets the color when drawn inactive items on top of the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setError">setError (color)</a></td>
+	<td class="summary">Sets the error color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getError">getError ()</a></td>
+	<td class="summary">Gets the error color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setOnError">setOnError (color)</a></td>
+	<td class="summary">Sets the color when drawn on top of the error color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnError">getOnError ()</a></td>
+	<td class="summary">Gets the color when drawn on top of the error color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setFocused">setFocused (color)</a></td>
+	<td class="summary">Sets the opacity when drawn on focused items</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getFocused">getFocused ()</a></td>
+	<td class="summary">Gets the color when drawn on focused items</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setHover">setHover (opacity)</a></td>
+	<td class="summary">Sets the opacity when drawn on hover items</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setActive">setActive (opacity)</a></td>
+	<td class="summary">Sets the opacity when drawn on active items</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setInactive">setInactive (opacity)</a></td>
+	<td class="summary">Sets the opacity when drawn on inactive items</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setRipple">setRipple (opacity)</a></td>
+	<td class="summary">Sets the opacity of the ripple</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "setPrimary"></a>
+    <strong>setPrimary (color)</strong>
+    </dt>
+    <dd>
+    Sets the primary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getPrimary"></a>
+    <strong>getPrimary ()</strong>
+    </dt>
+    <dd>
+    Gets the tonal variation of the primary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setPrimaryVariant"></a>
+    <strong>setPrimaryVariant (color)</strong>
+    </dt>
+    <dd>
+    Sets the tonal variation of the primary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getPrimaryVariant"></a>
+    <strong>getPrimaryVariant ()</strong>
+    </dt>
+    <dd>
+    Gets the primary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setOnPrimary"></a>
+    <strong>setOnPrimary (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn on top of the primary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnPrimary"></a>
+    <strong>getOnPrimary ()</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn on top of the primary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getRippleOnPrimary"></a>
+    <strong>getRippleOnPrimary (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn ripple on primary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setSecondary"></a>
+    <strong>setSecondary (color)</strong>
+    </dt>
+    <dd>
+    Sets the secondary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSecondary"></a>
+    <strong>getSecondary ()</strong>
+    </dt>
+    <dd>
+    Gets the secondary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getRippleSecondary"></a>
+    <strong>getRippleSecondary (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn ripple on the secondary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getHoverSecondary"></a>
+    <strong>getHoverSecondary ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn hover items on the secondary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getActiveSecondary"></a>
+    <strong>getActiveSecondary ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn active items on the secondary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getInactiveSecondary"></a>
+    <strong>getInactiveSecondary ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn inactive items on the secondary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setSecondaryVariant"></a>
+    <strong>setSecondaryVariant (color)</strong>
+    </dt>
+    <dd>
+    Sets the tonal variation of the secondary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSecondaryVariant"></a>
+    <strong>getSecondaryVariant ()</strong>
+    </dt>
+    <dd>
+    Gets the tonal variation of the secondary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setOnSecondary"></a>
+    <strong>setOnSecondary (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn on top of the secondary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnSecondary"></a>
+    <strong>getOnSecondary ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn on top of the secondary color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getRippleOnSecondary"></a>
+    <strong>getRippleOnSecondary (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn ripple on secondary color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getHoverOnSecondary"></a>
+    <strong>getHoverOnSecondary ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn hover items on top of the secondary colorcolor
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getActiveOnSecondary"></a>
+    <strong>getActiveOnSecondary ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn active items on top of the secondary colorcolor
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getInactiveOnSecondary"></a>
+    <strong>getInactiveOnSecondary ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn inactive items on top of the secondary colorcolor
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setBackground"></a>
+    <strong>setBackground (color)</strong>
+    </dt>
+    <dd>
+    Sets the background color appears behind scrollable contentcolor
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getBackground"></a>
+    <strong>getBackground ()</strong>
+    </dt>
+    <dd>
+    Gets the background color appears behind scrollable content
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setOnBackground"></a>
+    <strong>setOnBackground (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn on top of the background color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnBackground"></a>
+    <strong>getOnBackground ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn on top of the background color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setSurface"></a>
+    <strong>setSurface (color)</strong>
+    </dt>
+    <dd>
+    Sets the surface color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSurface"></a>
+    <strong>getSurface ()</strong>
+    </dt>
+    <dd>
+    Gets the surface color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setOnSurface"></a>
+    <strong>setOnSurface (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn on top of the surface color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnSurface"></a>
+    <strong>getOnSurface ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn on top of the surface color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getRippleOnSurface"></a>
+    <strong>getRippleOnSurface (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn ripple on surface color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getHoverOnSurface"></a>
+    <strong>getHoverOnSurface ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn hover items on top of the surface color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getActiveOnSurface"></a>
+    <strong>getActiveOnSurface ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn active items on top of the surface color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getInactiveOnSurface"></a>
+    <strong>getInactiveOnSurface ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn inactive items on top of the surface color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setError"></a>
+    <strong>setError (color)</strong>
+    </dt>
+    <dd>
+    Sets the error color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getError"></a>
+    <strong>getError ()</strong>
+    </dt>
+    <dd>
+    Gets the error color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setOnError"></a>
+    <strong>setOnError (color)</strong>
+    </dt>
+    <dd>
+    Sets the color when drawn on top of the error color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnError"></a>
+    <strong>getOnError ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn on top of the error color
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setFocused"></a>
+    <strong>setFocused (color)</strong>
+    </dt>
+    <dd>
+    Sets the opacity when drawn on focused items
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         A color table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getFocused"></a>
+    <strong>getFocused ()</strong>
+    </dt>
+    <dd>
+    Gets the color when drawn on focused items
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The current color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setHover"></a>
+    <strong>setHover (opacity)</strong>
+    </dt>
+    <dd>
+    Sets the opacity when drawn on hover items
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opacity</span>
+         A opacity value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setActive"></a>
+    <strong>setActive (opacity)</strong>
+    </dt>
+    <dd>
+    Sets the opacity when drawn on active items
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opacity</span>
+         A opacity value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setInactive"></a>
+    <strong>setInactive (opacity)</strong>
+    </dt>
+    <dd>
+    Sets the opacity when drawn on inactive items
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opacity</span>
+         A opacity value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setRipple"></a>
+    <strong>setRipple (opacity)</strong>
+    </dt>
+    <dd>
+    Sets the opacity of the ripple
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opacity</span>
+         A opacity value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-09-09 16:57:49 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

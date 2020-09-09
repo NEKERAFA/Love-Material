@@ -28,7 +28,7 @@ end
 -- @function getButtonFont
 -- @return The icon font
 local function _material_icons_getbuttonfont ()
-    return _material_icons_font
+    return _material_icons_buttonfont
 end
 
 ---
@@ -51,7 +51,7 @@ return {
     codepoints = _material_icons_codepoints,
 
     getFont       = _material_icons_getfont,
-    getButtonFont = _material_icons_buttonfont,
+    getButtonFont = _material_icons_getbuttonfont,
     getSize       = _material_icons_getsize,
     getButtonSize = _material_icons_buttonsize
 }

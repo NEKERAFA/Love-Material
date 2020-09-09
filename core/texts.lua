@@ -8,17 +8,16 @@ return function ( material )
 local _material_texts_emojis = require (material._CONSTANTS .. ".emojis")
 
 -- Loads all fonts
-local _material_texts_fontdisplay1 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Regular.ttf", 32)
-local _material_texts_fontdisplay2 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Regular.ttf", 24)
-local _material_texts_fontdisplay3 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Regular.ttf", 20)
-local _material_texts_fontdisplay4 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Regular.ttf", 18)
-local _material_texts_fontdisplay5 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Regular.ttf", 16)
-local _material_texts_fontdisplay6 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Regular.ttf", 14)
-local _material_texts_fontsubtitle = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Regular.ttf", 12)
+local _material_texts_fontdisplay1 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 32)
+local _material_texts_fontdisplay2 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 24)
+local _material_texts_fontdisplay3 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 20)
+local _material_texts_fontdisplay4 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 18)
+local _material_texts_fontdisplay5 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 16)
+local _material_texts_fontdisplay6 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 14)
+local _material_texts_fontsubtitle = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 12)
 local _material_texts_fontsans     = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSans-Regular.ttf", 12)
 local _material_texts_fontserif    = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSerif-Regular.ttf", 12)
 local _material_texts_fontmono     = love.graphics.newFont(material._ASSETS .. "/fonts/NotoMono-Regular.ttf", 12)
-local _material_texts_fontemoji    = love.graphics.newFont(material._ASSETS .. "/fonts/NotoColorEmoji.ttf", 12)
 
 ---
 -- Gets the header font
@@ -66,19 +65,10 @@ local function _material_text_getbody (family)
     end
 end
 
----
--- Gets the emoji font
--- @function getEmoji
--- @return The font
-local function _material_text_getemoji ()
-    return _material_texts_fontemoji
-end
-
 return {
    getDisplay  = _material_text_getdisplay,
    getSubtitle = _material_text_getsubtitle,
    getBody     = _material_text_getbody,
-   getEmoji    = _material_texts_emojis 
 }
 
 end
