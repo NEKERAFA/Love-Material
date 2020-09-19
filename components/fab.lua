@@ -53,19 +53,24 @@ local function _material_buttons_fab (icon, x, y, ripple, variant, elevation, in
     hover = hover or false
     focused = focused or false
 
-    local shadow = material.shadow(_buttonSize, _buttonSize, elevation, function (w, h)
-        local _love_color = { love.graphics.getColor() }
-        love.graphics.setColor(0, 0, 0)
-        love.graphics.circle("fill", w / 2, h / 2, _radius)
-        love.graphics.setColor(_love_color)
-    end)
+    local _shadow
+    if elevation > 0 then
+        _shadow = material.shadow(_buttonSize, _buttonSize, elevation, function (w, h)
+            local _love_color = { love.graphics.getColor() }
+            love.graphics.setColor(0, 0, 0)
+            love.graphics.circle("fill", w / 2, h / 2, _radius)
+            love.graphics.setColor(_love_color)
+        end)
+    end
 
     local _love_color = { love.graphics.getColor() }
     local _love_font = love.graphics.getFont()
 
     -- Draws the elevation
-    love.graphics.setColor(0, 0, 0, 0.2)
-    love.graphics.draw(shadow, x + (_buttonSize / 2) - (shadow:getWidth() / 2), y + (_buttonSize / 2) - (shadow:getHeight() / 2) + (elevation / 2))
+    if elevation > 0 then
+        love.graphics.setColor(0, 0, 0, 0.2)
+        love.graphics.draw(_shadow, x + (_buttonSize / 2) - (_shadow:getWidth() / 2), y + (_buttonSize / 2) - (_shadow:getHeight() / 2) + (elevation / 2))
+    end
 
     -- Draws the focus
     if focused then
@@ -98,7 +103,7 @@ local function _material_buttons_fab (icon, x, y, ripple, variant, elevation, in
     love.graphics.setFont(_iconFont)
     love.graphics.print(material.icons.codepoints[icon], x + _radius - (_iconSize / 2), y + _radius - (_iconSize / 2))
 
-    shadow:release()
+    if elevation > 0 then _shadow:release() end
 
     love.graphics.setColor(_love_color)
     love.graphics.setFont(_love_font)

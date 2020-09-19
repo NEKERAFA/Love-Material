@@ -53,7 +53,7 @@ return {
     getFont       = _material_icons_getfont,
     getButtonFont = _material_icons_getbuttonfont,
     getSize       = _material_icons_getsize,
-    getButtonSize = _material_icons_buttonsize
+    getButtonSize = _material_icons_getbuttonsize
 }
 
 end

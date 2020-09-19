@@ -40,17 +40,17 @@
 <ul class="nowrap">
   <li><a href="../modules/material.buttons.html">material.buttons</a></li>
   <li><a href="../modules/material.icons.html">material.icons</a></li>
-  <li><strong>material.texts</strong></li>
+  <li><a href="../modules/material.texts.html">material.texts</a></li>
   <li><a href="../modules/material.theme.html">material.theme</a></li>
-  <li><a href="../modules/material.html">material</a></li>
+  <li><strong>material</strong></li>
 </ul>
 
 </div>
 
 <div id="content">
 
-<h1>Module <code>material.texts</code></h1>
-<p>Draws text using material theme</p>
+<h1>Module <code>material</code></h1>
+<p>Basic functions and components</p>
 <p>
 
 </p>
@@ -59,16 +59,8 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#getDisplay">getDisplay (header)</a></td>
-	<td class="summary">Gets the header font</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#getSubtitle">getSubtitle ()</a></td>
-	<td class="summary">Gets the sub header font</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#getBody">getBody (family)</a></td>
-	<td class="summary">Gets the body font</td>
+	<td class="name" nowrap><a href="#shadow">shadow (width, height, radius, onDraw)</a></td>
+	<td class="summary">Creates a texture with a blur effect</td>
 	</tr>
 </table>
 
@@ -80,69 +72,29 @@
 
     <dl class="function">
     <dt>
-    <a name = "getDisplay"></a>
-    <strong>getDisplay (header)</strong>
+    <a name = "shadow"></a>
+    <strong>shadow (width, height, radius, onDraw)</strong>
     </dt>
     <dd>
-    Gets the header font
+    Creates a texture with a blur effect
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">header</span>
-         The header size (1-6)
+        <li><span class="parameter">width</span>
+         The width of the texture
+        </li>
+        <li><span class="parameter">height</span>
+         The height of the texture
+        </li>
+        <li><span class="parameter">radius</span>
+         The radius of blur in pixels
+        </li>
+        <li><span class="parameter">onDraw</span>
+         The function that draws the graphics resources to blur
         </li>
     </ul>
 
-    <h3>Returns:</h3>
-    <ol>
-
-        The font
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "getSubtitle"></a>
-    <strong>getSubtitle ()</strong>
-    </dt>
-    <dd>
-    Gets the sub header font
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-        The font
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "getBody"></a>
-    <strong>getBody (family)</strong>
-    </dt>
-    <dd>
-    Gets the body font
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">family</span>
-         The family font: sans, serif or mono
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        The font
-    </ol>
 
 
 

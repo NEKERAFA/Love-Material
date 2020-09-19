@@ -97,7 +97,7 @@ end
 
 ---
 -- Draws a icon button
--- @function iconbutton
+-- @function iconButton
 -- @param icon The icon to draw
 -- @param x The position in x-axis
 -- @param y The position in y-axis
@@ -120,7 +120,7 @@ end
 
 ---
 -- Draws a foating action button
--- @function fab
+-- @function foatingActionButton
 -- @param content A string with the text or a table with the following values:
 -- <ul style="list-style-type: circle">
 -- <li><span class='parameter'>icon</span> The icon of the button
@@ -146,14 +146,14 @@ local function _material_buttons_fab ( content, x, y, ripple, elevation, inactiv
 end
 
 return {
-    getSize          = _material_buttons_getsize,
-    getPixelSize     = _material_buttons_getpixelsize,
-    getIconPixelSize = _material_buttons_geticonbuttonpixelsize,
-    getFabPixelSize  = _material_buttons_getfabpixelsize,
-    setSize          = _material_buttons_setsize,
-    button           = _material_buttons_button,
-    iconButton       = _material_buttons_iconbutton,
-    fab              = _material_buttons_fab,
+    getSize              = _material_buttons_getsize,
+    getPixelSize         = _material_buttons_getpixelsize,
+    getIconPixelSize     = _material_buttons_geticonbuttonpixelsize,
+    getFabPixelSize      = _material_buttons_getfabpixelsize,
+    setSize              = _material_buttons_setsize,
+    button               = _material_buttons_button,
+    iconButton           = _material_buttons_iconbutton,
+    floatingActionButton = _material_buttons_fab,
 }
 
 end

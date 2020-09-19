@@ -8,13 +8,13 @@ local function _material_buttons_button_stencil (x, y, width, height)
 end
 
 -- Draws a button
-local function _material_buttons_button (content, x, y, ripple, variant, width, inactive, hover, focused)
+local function _material_buttons_button (content, x, y, ripple, variant, width, elevation, inactive, hover, focused)
     -- Checks the content
     local _text, _icon
     if type(content) == "string" then
         _text = content
-    elseif type(content) == "table" then
-        _text = content[1]; _icon = content[2]
+    elseif type(content) == "table" and #content == 2 then
+        _icon = content[1]; _text = content[2]
     else
         error("content must be a string or table variable", 2)
     end
@@ -31,7 +31,7 @@ local function _material_buttons_button (content, x, y, ripple, variant, width, 
         _hoverColor      = material.theme.getHoverOnSecondary()
         _rippleColor     = material.theme.getRippleOnSecondary()
     elseif variant == "outlined" then
-        _backgroundColor = false
+        _backgroundColor = material.theme.get
         _outlinedColor   = material.theme.getSecondary()
         _color           = material.theme.getActiveSecondary()
         _inactiveColor   = material.theme.getInactiveSecondary()
@@ -48,9 +48,11 @@ local function _material_buttons_button (content, x, y, ripple, variant, width, 
 
     local _focusedColor    = material.theme.getFocused()
 
-    -- Gets button font
+    -- Gets button fonts and sizes
     local _buttonFont = material.texts.getBody("sans")
     local _buttonIconFont = material.icons.getButtonFont()
+
+    local _buttonIconSize = material.icons.getButtonSize()
     
     -- Checks width argument
     local _offset = 0
@@ -64,7 +66,7 @@ local function _material_buttons_button (content, x, y, ripple, variant, width, 
                 _offset = 32
             end
         else
-            width = width + 8 + material.icons.getButtonSize()
+            width = width + 8 + _buttonIconSize
             if variant == "text" then
                 _offset = 16
             else
@@ -118,20 +120,10 @@ local function _material_buttons_button (content, x, y, ripple, variant, width, 
     elseif hover then love.graphics.setColor(_hoverColor)
     else love.graphics.setColor(_color) end
 
-    if type(_icon) == "string" then
+    if _icon ~= nil then
         love.graphics.setFont(_buttonIconFont)
-        love.graphics.print(material.icons.codepoints[_icon], x + _dx, y + _height / 2 - material.icons.getButtonSize() / 2)
-        _dx = _dx + material.icon.getButtonSize() + 8
-    elseif _icon ~= nil then
-        _iconWidth = material.icons.getButtonSize()
-        _iconHeight = material.icons.getButtonSize()
-
-        if _iconHeight > _iconWidth then
-            _iconHeight = _icon:getWidth() * material.icons.getButtonSize() / _icon:getHeight()
-        end
-
-        love.graphics.draw(_icon, x + _dx, y + _height / 2 - _iconHeight / 2, 0, _iconWidth / _icon:getWidth(), _iconHeight / _icon:getHeight())
-        _dx = _dx + material.icon.getButtonSize() + 8
+        love.graphics.print(material.icons.codepoints[_icon], x + _dx, y + _height / 2 - _buttonIconSize / 2)
+        _dx = _dx + _buttonIconSize + 8
     end
 
     love.graphics.setFont(_buttonFont)

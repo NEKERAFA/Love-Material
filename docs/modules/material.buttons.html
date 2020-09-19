@@ -42,6 +42,7 @@
   <li><a href="../modules/material.icons.html">material.icons</a></li>
   <li><a href="../modules/material.texts.html">material.texts</a></li>
   <li><a href="../modules/material.theme.html">material.theme</a></li>
+  <li><a href="../modules/material.html">material</a></li>
 </ul>
 
 </div>
@@ -62,11 +63,15 @@
 	<td class="summary">Gets the size of the buttons</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#getPixelSize">getPixelSize ()</a></td>
+	<td class="name" nowrap><a href="#getIconButtonPixelSize">getIconButtonPixelSize ()</a></td>
 	<td class="summary">Gets the size of the icon buttons in pixels</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#getPixelSize">getPixelSize (size)</a></td>
+	<td class="name" nowrap><a href="#getPixelSize">getPixelSize ()</a></td>
+	<td class="summary">Gets the size of the buttons in pixels</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setSize">setSize (size)</a></td>
 	<td class="summary">Sets the size of the buttons</td>
 	</tr>
 	<tr>
@@ -74,8 +79,12 @@
 	<td class="summary">Draws a button</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#iconbutton">iconbutton (icon, x, y[, ripple_x[, ripple_y[, ripple_radius[, inactive[, hover[, focused]]]]]])</a></td>
+	<td class="name" nowrap><a href="#iconButton">iconButton (icon, x, y[, ripple[, variant[, width[, elevation[, inactive[, hover[, focused]]]]]]])</a></td>
 	<td class="summary">Draws a icon button</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#foatingActionButton">foatingActionButton (content, x, y[, ripple[, variant[, width[, elevation[, inactive[, hover[, focused]]]]]]])</a></td>
+	<td class="summary">Draws a foating action button</td>
 	</tr>
 </table>
 
@@ -106,8 +115,8 @@
 
 </dd>
     <dt>
-    <a name = "getPixelSize"></a>
-    <strong>getPixelSize ()</strong>
+    <a name = "getIconButtonPixelSize"></a>
+    <strong>getIconButtonPixelSize ()</strong>
     </dt>
     <dd>
     Gets the size of the icon buttons in pixels
@@ -126,7 +135,26 @@
 </dd>
     <dt>
     <a name = "getPixelSize"></a>
-    <strong>getPixelSize (size)</strong>
+    <strong>getPixelSize ()</strong>
+    </dt>
+    <dd>
+    Gets the size of the buttons in pixels
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The size of the buttons in pixel
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setSize"></a>
+    <strong>setSize (size)</strong>
     </dt>
     <dd>
     Sets the size of the buttons
@@ -208,8 +236,8 @@
 
 </dd>
     <dt>
-    <a name = "iconbutton"></a>
-    <strong>iconbutton (icon, x, y[, ripple_x[, ripple_y[, ripple_radius[, inactive[, hover[, focused]]]]]])</strong>
+    <a name = "iconButton"></a>
+    <strong>iconButton (icon, x, y[, ripple[, variant[, width[, elevation[, inactive[, hover[, focused]]]]]]])</strong>
     </dt>
     <dd>
     Draws a icon button
@@ -226,24 +254,96 @@
         <li><span class="parameter">y</span>
          The position in y-axis
         </li>
-        <li><span class="parameter">ripple_x</span>
-         The position of the ripple in the local x-axis
+        <li><span class="parameter">ripple</span>
+         A table with the following values:
+ <ul style="list-style-type: circle">
+ <li><span class='parameter'>x</span> x ripple position in the local x-axis</li>
+ <li><span class='parameter'>y</span> y ripple position in the local y-axis</li>
+ <li><span class='parameter'>radius</span> radius of the ripple</li>
+ </ul>
          (<em>optional</em>)
         </li>
-        <li><span class="parameter">ripple_y</span>
-         The position of the ripple in the local y-axis
+        <li><span class="parameter">variant</span>
+         The type of the button: "contained", "outlined" or "text"
          (<em>optional</em>)
         </li>
-        <li><span class="parameter">ripple_radius</span>
-         The radius of the ripple
+        <li><span class="parameter">width</span>
+         The width of the button
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">elevation</span>
+         The elevation of the button
          (<em>optional</em>)
         </li>
         <li><span class="parameter">inactive</span>
-         Shows the icon as disabled
+         Shows the button as disabled
          (<em>optional</em>)
         </li>
         <li><span class="parameter">hover</span>
-         Shows the icon as hover
+         Shows the button as hover
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">focused</span>
+         Shows the outlined of the focused button
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "foatingActionButton"></a>
+    <strong>foatingActionButton (content, x, y[, ripple[, variant[, width[, elevation[, inactive[, hover[, focused]]]]]]])</strong>
+    </dt>
+    <dd>
+    Draws a foating action button
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">content</span>
+         A string with the text or a table with the following values:
+ <ul style="list-style-type: circle">
+ <li><span class='parameter'>icon</span> The icon of the button
+ <li><span class='parameter'>text</span> The text of the button
+ </ul>
+        </li>
+        <li><span class="parameter">x</span>
+         The position in x-axis
+        </li>
+        <li><span class="parameter">y</span>
+         The position in y-axis
+        </li>
+        <li><span class="parameter">ripple</span>
+         A table with the following values:
+ <ul style="list-style-type: circle">
+ <li><span class='parameter'>x</span> x ripple position in the local x-axis</li>
+ <li><span class='parameter'>y</span> y ripple position in the local y-axis</li>
+ <li><span class='parameter'>radius</span> radius of the ripple</li>
+ </ul>
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">variant</span>
+         The type of the button: "contained", "outlined" or "text"
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">width</span>
+         The width of the button
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">elevation</span>
+         The elevation of the button
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">inactive</span>
+         Shows the button as disabled
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">hover</span>
+         Shows the button as hover
          (<em>optional</em>)
         </li>
         <li><span class="parameter">focused</span>
@@ -264,7 +364,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2020-09-10 18:51:54 </i>
+<i style="float:right;">Last updated 2020-09-19 13:47:16 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

@@ -1,3 +1,7 @@
+---
+-- Basic functions and components
+-- @module material
+
 local _material = {
     _VERSION      = 'Mäterial 1.0.0',
     _DESCRIPTION = 'Immediate Mode UI library for LÖVE that implements the Material Design specs.',
@@ -44,10 +48,6 @@ local _material = {
         SOFTWARE.
     ]]
 }
-
----
--- Basic functions and components
--- @module material
 
 -- Gets the material require path
 _material._BASE = ...
@@ -97,7 +97,5 @@ end
 -- Loads buttons module
 local _material_buttons = require (_material._CORE .. ".buttons")
 _material.buttons = _material_buttons(_material)
-
-print(_material.buttons.getFabPixelSize(), _material.icons.getSize())
 
 return _material
