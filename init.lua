@@ -45,6 +45,10 @@ local _material = {
     ]]
 }
 
+---
+-- Basic functions and components
+-- @module material
+
 -- Gets the material require path
 _material._BASE = ...
 
@@ -75,8 +79,25 @@ _material.icons = _material_icons(_material)
 local _material_texts = require (_material._CORE .. ".texts")
 _material.texts = _material_texts(_material)
 
+-- Load shadow module
+local _material_shadow = require (_material._CORE .. ".shadow")
+
+---
+-- Creates a texture with a blur effect
+-- @function shadow
+-- @param width The width of the texture
+-- @param height The height of the texture
+-- @param radius The radius of blur in pixels
+-- @param onDraw The function that draws the graphics resources to blur
+_material.shadow = function (width, height, radius, onDraw)
+    local callback = _material_shadow(_material)
+    return callback(width, height, radius, onDraw)
+end
+
 -- Loads buttons module
 local _material_buttons = require (_material._CORE .. ".buttons")
 _material.buttons = _material_buttons(_material)
+
+print(_material.buttons.getFabPixelSize(), _material.icons.getSize())
 
 return _material

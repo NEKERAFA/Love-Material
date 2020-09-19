@@ -8,7 +8,7 @@ local function _material_buttons_iconbutton_stencil (x, y, radius)
 end
 
 -- Draws a icon button
-local function _material_buttons_iconbutton (icon, x, y, ripple_x, ripple_y, ripple_radius, inactive, hover, focused)
+local function _material_buttons_iconbutton (icon, x, y, ripple, inactive, hover, focused)
     local _size = material.buttons.getPixelSize()
     local _radius = _size / 2
 
@@ -26,9 +26,9 @@ local function _material_buttons_iconbutton (icon, x, y, ripple_x, ripple_y, rip
     local _iconSize = material.icons.getSize()
 
     -- Checks optional args
-    ripple_x = ripple_x or _radius
-    ripple_y = ripple_y or _radius
-    ripple_radius = ripple_radius or 0
+    local _ripple_x = (ripple and ripple.x) or _radius
+    local _ripple_y = (ripple and ripple.y) or _radius
+    local _ripple_radius = (ripple and ripple.radius) or 0
     inactive = inactive or false
     hover = hover or false
     focused = focused or false
@@ -50,7 +50,7 @@ local function _material_buttons_iconbutton (icon, x, y, ripple_x, ripple_y, rip
     love.graphics.stencil(_material_buttons_iconbutton_stencil(x + _radius, y + _radius, _radius))
     love.graphics.setStencilTest("greater", 0)
     love.graphics.setColor(_rippleColor)
-    love.graphics.circle("fill", x + ripple_x, y + ripple_y, ripple_radius * _radius * 2)
+    love.graphics.circle("fill", x + _ripple_x, y + _ripple_y, _ripple_radius * _radius * 2)
     love.graphics.setStencilTest()
 
     -- Draws the icon

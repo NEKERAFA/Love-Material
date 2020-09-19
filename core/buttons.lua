@@ -6,6 +6,7 @@ return function ( material )
 
 local _material_components_button     = require (material._COMPONENTS .. ".button")
 local _material_components_iconbutton = require (material._COMPONENTS .. ".iconbutton")
+local _material_components_fab        = require (material._COMPONENTS .. ".fab")
 
 local _material_buttons_size = "normal"
 
@@ -19,9 +20,9 @@ end
 
 ---
 -- Gets the size of the icon buttons in pixels
--- @function getPixelSize
+-- @function getIconButtonPixelSize
 -- @return The size of the icon buttons in pixel
-local function _material_buttons_geticonpixelsize ()
+local function _material_buttons_geticonbuttonpixelsize ()
     local _size = 40
     if _material_buttons_size == "small" then
         _size = 32
@@ -43,10 +44,23 @@ local function _material_buttons_getpixelsize ()
 end
 
 ---
--- Sets the size of the buttons
+-- Gets the size of the buttons in pixels
 -- @function getPixelSize
+-- @return The size of the buttons in pixel
+local function _material_buttons_getfabpixelsize()
+    local _size = 48
+    if _material_buttons_size == "small" then
+        _size = 40
+    end
+
+    return _size
+end
+
+---
+-- Sets the size of the buttons
+-- @function setSize
 -- @param size The size of the buttons: "normal" for normal size and "small" for condensed size 
-local function _material_buttons_size_setsize ( size )
+local function _material_buttons_setsize ( size )
     if size == "normal" or size == "small" then
         _material_buttons_size = size
     else
@@ -57,20 +71,28 @@ end
 ---
 -- Draws a button
 -- @function button
--- @param icon The icon to draw
+-- @param content A string with the text or a table with the following values:
+-- <ul style="list-style-type: circle">
+-- <li><span class='parameter'>icon</span> The icon of the button
+-- <li><span class='parameter'>text</span> The text of the button
+-- </ul>
 -- @param x The position in x-axis
 -- @param y The position in y-axis
--- @param[opt] ripple_x The position of the ripple in the local x-axis
--- @param[opt] ripple_y The position of the ripple in the local y-axis
--- @param[opt] ripple_radius The radius of the ripple
--- @param[opt] variant The type of the icon: "contained", "outlined" or "text"
--- @param[opt] width The width of the icon
--- @param[opt] inactive Shows the icon as disabled
--- @param[opt] hover Shows the icon as hover
+-- @param[opt] ripple A table with the following values: 
+-- <ul style="list-style-type: circle">
+-- <li><span class='parameter'>x</span> x ripple position in the local x-axis</li>
+-- <li><span class='parameter'>y</span> y ripple position in the local y-axis</li>
+-- <li><span class='parameter'>radius</span> radius of the ripple</li>
+-- </ul>
+-- @param[opt] variant The type of the button: "contained", "outlined" or "text"
+-- @param[opt] width The width of the button
+-- @param[opt] elevation The elevation of the button
+-- @param[opt] inactive Shows the button as disabled
+-- @param[opt] hover Shows the button as hover
 -- @param[opt] focused Shows the outlined of the focused button
-local function _material_buttons_button ( content, x, y, ripple_x, ripple_y, ripple_radius, variant, width, inactive, hover, focused )
+local function _material_buttons_button ( content, x, y, ripple, variant, width, elevation, inactive, hover, focused )
     local callback = _material_components_button(material)
-    callback(content, x, y, ripple_x, ripple_y, ripple_radius, variant, width, inactive, hover, focused)
+    callback(content, x, y, ripple, variant, width, elevation, inactive, hover, focused)
 end
 
 ---
@@ -79,23 +101,59 @@ end
 -- @param icon The icon to draw
 -- @param x The position in x-axis
 -- @param y The position in y-axis
--- @param[opt] ripple_x The position of the ripple in the local x-axis
--- @param[opt] ripple_y The position of the ripple in the local y-axis
--- @param[opt] ripple_radius The radius of the ripple
--- @param[opt] inactive Shows the icon as disabled
--- @param[opt] hover Shows the icon as hover
+-- @param[opt] ripple A table with the following values: 
+-- <ul style="list-style-type: circle">
+-- <li><span class='parameter'>x</span> x ripple position in the local x-axis</li>
+-- <li><span class='parameter'>y</span> y ripple position in the local y-axis</li>
+-- <li><span class='parameter'>radius</span> radius of the ripple</li>
+-- </ul>
+-- @param[opt] variant The type of the button: "contained", "outlined" or "text"
+-- @param[opt] width The width of the button
+-- @param[opt] elevation The elevation of the button
+-- @param[opt] inactive Shows the button as disabled
+-- @param[opt] hover Shows the button as hover
 -- @param[opt] focused Shows the outlined of the focused button
-local function _material_buttons_iconbutton ( icon, x, y, ripple_x, ripple_y, ripple_radius, inactive, hover, focused )
+local function _material_buttons_iconbutton ( icon, x, y, ripple, elevation, inactive, hover, focused )
     local callback = _material_components_iconbutton(material)
-    callback(icon, x, y, ripple_x, ripple_y, ripple_radius, inactive, hover, focused)
+    callback(icon, x, y, ripple, elevation, inactive, hover, focused)
+end
+
+---
+-- Draws a foating action button
+-- @function fab
+-- @param content A string with the text or a table with the following values:
+-- <ul style="list-style-type: circle">
+-- <li><span class='parameter'>icon</span> The icon of the button
+-- <li><span class='parameter'>text</span> The text of the button
+-- </ul>
+-- @param x The position in x-axis
+-- @param y The position in y-axis
+-- @param[opt] ripple A table with the following values: 
+-- <ul style="list-style-type: circle">
+-- <li><span class='parameter'>x</span> x ripple position in the local x-axis</li>
+-- <li><span class='parameter'>y</span> y ripple position in the local y-axis</li>
+-- <li><span class='parameter'>radius</span> radius of the ripple</li>
+-- </ul>
+-- @param[opt] variant The type of the button: "contained", "outlined" or "text"
+-- @param[opt] width The width of the button
+-- @param[opt] elevation The elevation of the button
+-- @param[opt] inactive Shows the button as disabled
+-- @param[opt] hover Shows the button as hover
+-- @param[opt] focused Shows the outlined of the focused button
+local function _material_buttons_fab ( content, x, y, ripple, elevation, inactive, hover, focused )
+    local callback = _material_components_fab(material)
+    callback(content, x, y, ripple, elevation, inactive, hover, focused)
 end
 
 return {
-    getSize      = _material_buttons_getsize,
-    getPixelSize = _material_buttons_getpixelsize,
-    getSize      = _material_buttons_getsize,
-    button       = _material_buttons_button,
-    iconButton   = _material_buttons_iconbutton,
+    getSize          = _material_buttons_getsize,
+    getPixelSize     = _material_buttons_getpixelsize,
+    getIconPixelSize = _material_buttons_geticonbuttonpixelsize,
+    getFabPixelSize  = _material_buttons_getfabpixelsize,
+    setSize          = _material_buttons_setsize,
+    button           = _material_buttons_button,
+    iconButton       = _material_buttons_iconbutton,
+    fab              = _material_buttons_fab,
 }
 
 end

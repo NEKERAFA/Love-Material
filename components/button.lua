@@ -8,7 +8,7 @@ local function _material_buttons_button_stencil (x, y, width, height)
 end
 
 -- Draws a button
-local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripple_radius, variant, width, inactive, hover, focused)
+local function _material_buttons_button (content, x, y, ripple, variant, width, inactive, hover, focused)
     -- Checks the content
     local _text, _icon
     if type(content) == "string" then
@@ -53,7 +53,7 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
     local _buttonIconFont = material.icons.getButtonFont()
     
     -- Checks width argument
-    local _offset
+    local _offset = 0
     if width == nil then
         width = _buttonFont:getWidth(_text)
 
@@ -78,9 +78,9 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
     local _height = material.buttons.getPixelSize()
 
     -- Checks optional args
-    ripple_x = ripple_x or _width / 2
-    ripple_y = ripple_y or _height / 2
-    ripple_radius = ripple_radius or 0
+    local _ripple_x = (ripple and ripple.x) or _width / 2
+    local _ripple_y = (ripple and ripple.y) or _height / 2
+    local _ripple_radius = (ripple and ripple.radius) or 0
     inactive = inactive or false
     hover = hover or false
     focused = focused or false
@@ -91,7 +91,7 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
     -- Draws the focus
     if focused then
         love.graphics.setColor(_focusedColor)
-        love.graphics.rectangle("line", x-1, y-1, _width+2, _height+2, 4, 4)
+        love.graphics.rectangle("line", x-1, y-1, _width + 2, _height + 2, 4, 4)
     end
 
     -- Draws the background
@@ -110,7 +110,7 @@ local function _material_buttons_button (content, x, y, ripple_x, ripple_y, ripp
     love.graphics.stencil(_material_buttons_button_stencil(x, y, _width, _height))
     love.graphics.setStencilTest("greater", 0)
     love.graphics.setColor(_rippleColor)
-    love.graphics.circle("fill", x + ripple_x, y + ripple_y, ripple_radius * _width * 2)
+    love.graphics.circle("fill", x + _ripple_x, y + _ripple_y, _ripple_radius * _width * 2)
     love.graphics.setStencilTest()
 
     -- Draws the icon and the text
