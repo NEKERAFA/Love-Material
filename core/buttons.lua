@@ -37,20 +37,20 @@ end
 local function _material_buttons_getpixelsize ()
     local _size = 36
     if _material_buttons_size == "small" then
-        _size = 32
+        _size = 28
     end
 
     return _size
 end
 
 ---
--- Gets the size of the buttons in pixels
--- @function getPixelSize
+-- Gets the size of the floating action buttons in pixels
+-- @function getFabPixelSize
 -- @return The size of the buttons in pixel
 local function _material_buttons_getfabpixelsize()
     local _size = 48
     if _material_buttons_size == "small" then
-        _size = 40
+        _size = 36
     end
 
     return _size
@@ -107,15 +107,13 @@ end
 -- <li><span class='parameter'>y</span> y ripple position in the local y-axis</li>
 -- <li><span class='parameter'>radius</span> radius of the ripple</li>
 -- </ul>
--- @param[opt] variant The type of the button: "contained", "outlined" or "text"
 -- @param[opt] width The width of the button
--- @param[opt] elevation The elevation of the button
 -- @param[opt] inactive Shows the button as disabled
 -- @param[opt] hover Shows the button as hover
 -- @param[opt] focused Shows the outlined of the focused button
-local function _material_buttons_iconbutton ( icon, x, y, ripple, elevation, inactive, hover, focused )
+local function _material_buttons_iconbutton ( icon, x, y, ripple, inactive, hover, focused )
     local callback = _material_components_iconbutton(material)
-    callback(icon, x, y, ripple, elevation, inactive, hover, focused)
+    callback(icon, x, y, ripple, inactive, hover, focused)
 end
 
 ---
@@ -135,25 +133,24 @@ end
 -- <li><span class='parameter'>radius</span> radius of the ripple</li>
 -- </ul>
 -- @param[opt] variant The type of the button: "contained", "outlined" or "text"
--- @param[opt] width The width of the button
 -- @param[opt] elevation The elevation of the button
 -- @param[opt] inactive Shows the button as disabled
 -- @param[opt] hover Shows the button as hover
 -- @param[opt] focused Shows the outlined of the focused button
-local function _material_buttons_fab ( content, x, y, ripple, elevation, inactive, hover, focused )
+local function _material_buttons_fab ( content, x, y, ripple, variant, elevation, inactive, hover, focused )
     local callback = _material_components_fab(material)
-    callback(content, x, y, ripple, elevation, inactive, hover, focused)
+    callback(content, x, y, ripple, variant, elevation, inactive, hover, focused)
 end
 
 return {
-    getSize              = _material_buttons_getsize,
-    getPixelSize         = _material_buttons_getpixelsize,
-    getIconPixelSize     = _material_buttons_geticonbuttonpixelsize,
-    getFabPixelSize      = _material_buttons_getfabpixelsize,
-    setSize              = _material_buttons_setsize,
-    button               = _material_buttons_button,
-    iconButton           = _material_buttons_iconbutton,
-    floatingActionButton = _material_buttons_fab,
+    getSize                = _material_buttons_getsize,
+    getPixelSize           = _material_buttons_getpixelsize,
+    getIconButtonPixelSize = _material_buttons_geticonbuttonpixelsize,
+    getFabPixelSize        = _material_buttons_getfabpixelsize,
+    setSize                = _material_buttons_setsize,
+    button                 = _material_buttons_button,
+    iconButton             = _material_buttons_iconbutton,
+    floatingActionButton   = _material_buttons_fab,
 }
 
 end

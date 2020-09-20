@@ -4,9 +4,6 @@
 
 return function ( material )
 
--- Loads emoji codepoint
-local _material_texts_emojis = require (material._CONSTANTS .. ".emojis")
-
 -- Loads all fonts
 local _material_texts_fontdisplay1 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 32)
 local _material_texts_fontdisplay2 = love.graphics.newFont(material._ASSETS .. "/fonts/NotoSansDisplay-Light.ttf", 24)

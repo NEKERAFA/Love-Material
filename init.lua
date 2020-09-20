@@ -62,22 +62,32 @@ _material._CONSTANTS = _material._BASE .. ".constants"
 _material._COMPONENTS = _material._BASE .. ".components"
 
 -- Gets the extension require path
-_material._EXTENSIONS = _material._BASE .. ".ext"
+_material._EXTENSIONS = _material._BASE .. ".extensions"
 
 -- Gets the assets directory
 _material._ASSETS = string.gsub(_material._BASE, "%.", "/") .. "/assets"
 
+---
+-- Loads a component or some components into material library
+-- @function require
+-- @param modname The name of the component
+_material.loadComponents = function (modname)
+    local name = string.match(modname, "%.?(%w+)$")
+    local _components = require (modname)
+    _material[name] = _components(_material)
+end
+
 -- Loads theme module
-local _material_theme = require (_material._CORE .. ".theme")
-_material.theme = _material_theme(_material)
+_material.loadComponents(_material._CORE .. ".theme")
 
 -- Loads icon module
-local _material_icons = require (_material._CORE .. ".icons")
-_material.icons = _material_icons(_material)
+_material.loadComponents(_material._CORE .. ".icons")
 
 -- Loads texts module
-local _material_texts = require (_material._CORE .. ".texts")
-_material.texts = _material_texts(_material)
+_material.loadComponents(_material._CORE .. ".texts")
+
+-- Loads buttons module
+_material.loadComponents(_material._CORE .. ".buttons")
 
 -- Load shadow module
 local _material_shadow = require (_material._CORE .. ".shadow")
@@ -93,9 +103,5 @@ _material.shadow = function (width, height, radius, onDraw)
     local callback = _material_shadow(_material)
     return callback(width, height, radius, onDraw)
 end
-
--- Loads buttons module
-local _material_buttons = require (_material._CORE .. ".buttons")
-_material.buttons = _material_buttons(_material)
 
 return _material

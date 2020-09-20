@@ -40,6 +40,8 @@ local function _material_buttons_fab (icon, x, y, ripple, variant, elevation, in
         _rippleColor     = material.theme.getRippleSecondary()
     end
 
+    local _focusedColor    = material.theme.getFocused()
+
     -- Gets button fonts
     local _buttonFont = material.texts.getBody("sans")
     local _iconFont = material.icons.getFont()
@@ -48,7 +50,7 @@ local function _material_buttons_fab (icon, x, y, ripple, variant, elevation, in
     local _ripple_x = (ripple and ripple.x) or _radius
     local _ripple_y = (ripple and ripple.y) or _radius
     local _ripple_radius = (ripple and ripple.radius) or 0
-    elevation = elevation or 6
+    elevation = elevation or (variant == "text" and 0) or 6
     inactive = inactive or false
     hover = hover or false
     focused = focused or false
@@ -57,7 +59,7 @@ local function _material_buttons_fab (icon, x, y, ripple, variant, elevation, in
     if elevation > 0 then
         _shadow = material.shadow(_buttonSize, _buttonSize, elevation, function (w, h)
             local _love_color = { love.graphics.getColor() }
-            love.graphics.setColor(0, 0, 0)
+            love.graphics.setColor(0, 0, 0, 1)
             love.graphics.circle("fill", w / 2, h / 2, _radius)
             love.graphics.setColor(_love_color)
         end)
@@ -65,27 +67,34 @@ local function _material_buttons_fab (icon, x, y, ripple, variant, elevation, in
 
     local _love_color = { love.graphics.getColor() }
     local _love_font = love.graphics.getFont()
+    local _love_lineWidth = love.graphics.getLineWidth()
 
     -- Draws the elevation
     if elevation > 0 then
+        love.graphics.setColor(0, 0, 0, 0.1)
+        love.graphics.draw(_shadow, x + (_buttonSize / 2) - (_shadow:getWidth() / 2), y + (_buttonSize / 2) - (_shadow:getHeight() / 2))
         love.graphics.setColor(0, 0, 0, 0.2)
-        love.graphics.draw(_shadow, x + (_buttonSize / 2) - (_shadow:getWidth() / 2), y + (_buttonSize / 2) - (_shadow:getHeight() / 2) + (elevation / 2))
+        love.graphics.draw(_shadow, x + (_buttonSize / 2) - (_shadow:getWidth() / 2), y + (_buttonSize / 2) - (_shadow:getHeight() / 2) + elevation)
     end
 
     -- Draws the focus
     if focused then
         love.graphics.setColor(_focusedColor)
-        love.graphics.circle("line", x + _radius, y + _radius, _radius + 2)
+        love.graphics.circle("line", x + _radius, y + _radius, _radius + 1)
     end
-
-    -- Draws the background
-    love.graphics.setColor(_backgroundColor)
-    love.graphics.circle("fill", x + _radius, y + _radius, _radius)
 
     -- Draws the outlined
     if _outlinedColor then
         love.graphics.setColor(_outlinedColor)
-        love.graphics.circle("line", x + _radius, y + _radius, _radius)
+        love.graphics.circle("fill", x + _radius, y + _radius, _radius)
+    end
+
+    -- Draws the background
+    love.graphics.setColor(_backgroundColor)
+    if _outlinedColor then
+        love.graphics.circle("fill", x + _radius, y + _radius, _radius - 2)
+    else
+        love.graphics.circle("fill", x + _radius, y + _radius, _radius)
     end
 
     -- Draws the ripple
@@ -107,6 +116,7 @@ local function _material_buttons_fab (icon, x, y, ripple, variant, elevation, in
 
     love.graphics.setColor(_love_color)
     love.graphics.setFont(_love_font)
+    love.graphics.getLineWidth(_love_lineWidth)
 end
 
 return _material_buttons_fab

@@ -136,7 +136,7 @@ end
 -- @return The current color
 local function _material_theme_getinactivesecondary ()
     local color = _material_theme_getsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    color[4] = (color[4] or 1) * _material_theme_opacityinactive
     return color
 end
 
@@ -208,7 +208,7 @@ end
 -- @return The current color
 local function _material_theme_getinactiveonsecondary ()
     local color = _material_theme_getonsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    color[4] = (color[4] or 1) * _material_theme_opacityinactive
     return color
 end
 
@@ -312,7 +312,7 @@ end
 -- @return The current color
 local function _material_theme_getinactiveonsurface ()
     local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityactive
+    color[4] = (color[4] or 1) * _material_theme_opacityinactive
     return color
 end
 
