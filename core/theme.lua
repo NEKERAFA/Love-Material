@@ -75,16 +75,6 @@ local function _material_theme_getonprimary ()
 end
 
 ---
--- Sets the color when drawn ripple on primary color
--- @function getRippleOnPrimary
--- @param color A color table
-local function _material_theme_getrippleonprimary ( color )
-    local color = _material_theme_getonprimary()
-    color[4] = (color[4] or 1) * _material_theme_opacityripple
-    return color
-end
-
----
 -- Sets the secondary color
 -- @function setSecondary
 -- @param color A color table
@@ -405,7 +395,6 @@ return {
     getPrimaryVariant      = _material_theme_getprimaryvariant,
     setOnPrimary           = _material_theme_setonprimary,
     getOnPrimary           = _material_theme_getonprimary,
-    getRippleOnPrimary     = _material_theme_getrippleonprimary,
     setSecondary           = _material_theme_setsecondary,
     getSecondary           = _material_theme_getsecondary,
     getRippleSecondary     = _material_theme_getripplesecondary,

@@ -77,7 +77,7 @@ local function _material_buttons_button (content, x, y, ripple, variant, width, 
     -- Checks optional args
     local _ripple_x = (ripple and ripple.x) or _width / 2
     local _ripple_y = (ripple and ripple.y) or _height / 2
-    local _ripple_radius = (ripple and ripple.radius) or 0
+    local _ripple_radius = math.min((ripple and ripple.radius) or 0, 1)
     elevation = elevation or (variant == "text" and 0) or 2
     inactive = inactive or false
     hover = hover or false
@@ -125,11 +125,13 @@ local function _material_buttons_button (content, x, y, ripple, variant, width, 
     end
 
     -- Draws the ripple
-    love.graphics.stencil(_material_buttons_button_stencil(x, y, _width, _height))
-    love.graphics.setStencilTest("greater", 0)
-    love.graphics.setColor(_rippleColor)
-    love.graphics.circle("fill", x + _ripple_x, y + _ripple_y, _ripple_radius * _width * 2)
-    love.graphics.setStencilTest()
+    if _ripple_radius > 0 then
+        love.graphics.stencil(_material_buttons_button_stencil(x, y, _width, _height))
+        love.graphics.setStencilTest("greater", 0)
+        love.graphics.setColor(_rippleColor)
+        love.graphics.circle("fill", x + _ripple_x, y + _ripple_y, _ripple_radius * _width * 2)
+        love.graphics.setStencilTest()
+    end
 
     -- Draws the icon and the text
     if inactive then love.graphics.setColor(_inactiveColor)

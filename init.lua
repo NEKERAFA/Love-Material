@@ -69,7 +69,7 @@ _material._ASSETS = string.gsub(_material._BASE, "%.", "/") .. "/assets"
 
 ---
 -- Loads a component or some components into material library
--- @function require
+-- @function loadComponents
 -- @param modname The name of the component
 _material.loadComponents = function (modname)
     local name = string.match(modname, "%.?(%w+)$")
@@ -88,6 +88,9 @@ _material.loadComponents(_material._CORE .. ".texts")
 
 -- Loads buttons module
 _material.loadComponents(_material._CORE .. ".buttons")
+
+-- Loads inputs module
+_material.loadComponents(_material._CORE .. ".inputs")
 
 -- Load shadow module
 local _material_shadow = require (_material._CORE .. ".shadow")

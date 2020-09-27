@@ -35,7 +35,24 @@ function love.load()
     love.graphics.setFont(font)
 end
 
-function love.mousepressed(x, y, button)
+function love.mousemoved(x, y)
+    local ib_radius = material.buttons.getIconButtonPixelSize() / 2
+    local ib_dx, ib_dy = 10 + ib_radius - x, 80 + ib_radius - y
+    ib_status.hover = math.sqrt(ib_dx * ib_dx + ib_dy * ib_dy) <= ib_radius
+
+    local fab_radius = material.buttons.getFabPixelSize() / 2
+    local fab_dx, fab_dy = 100 + fab_radius - x, 80 + fab_radius - y
+    fab_status.hover = math.sqrt(fab_dx * fab_dx + fab_dy * fab_dy) <= fab_radius
+
+    local button_textWidth = font:getWidth("PRESS HERE")
+    local button_normalSize = material.buttons.getSize() == "normal"
+    local button_iconWitdh = material.icons.getButtonSize()
+    local button_height = material.buttons.getPixelSize()
+    local button_offset = (variant == "text" and ((button_normalSize and 16) or 8)) or ((button_normalSize and 32) or 16)
+    button_status.hover = x >= 10 and x <= 10 + ((show_icon and button_iconWitdh) or 0) + button_textWidth + button_offset and y >= 166 and y <= 166 + button_height
+end
+
+function love.mousepressed(x, y)
     ib_status.clicked = ib_status.hover
     if ib_status.clicked then
         ib_status.ripple = {x = x, y = y, radius = 0, dt = 0}
@@ -54,23 +71,6 @@ function love.mousepressed(x, y, button)
     ib_status.focused = ib_status.clicked and not fab_status.clicked and not button_status.clicked
     fab_status.focused = fab_status.clicked and not ib_status.clicked and not button_status.clicked
     button_status.focused = button_status.clicked and not ib_status.clicked and not fab_status.clicked
-end
-
-function love.mousemoved(x, y)
-    local ib_radius = material.buttons.getIconButtonPixelSize() / 2
-    local ib_dx, ib_dy = 10 + ib_radius - x, 80 + ib_radius - y
-    ib_status.hover = math.sqrt(ib_dx * ib_dx + ib_dy * ib_dy) <= ib_radius
-
-    local fab_radius = material.buttons.getFabPixelSize() / 2
-    local fab_dx, fab_dy = 100 + fab_radius - x, 80 + fab_radius - y
-    fab_status.hover = math.sqrt(fab_dx * fab_dx + fab_dy * fab_dy) <= fab_radius
-
-    local button_textWidth = font:getWidth("PRESS HERE")
-    local button_normalSize = material.buttons.getSize() == "normal"
-    local button_iconWitdh = material.icons.getButtonSize()
-    local button_height = material.buttons.getPixelSize()
-    local button_offset = (variant == "text" and ((button_normalSize and 16) or 8)) or ((button_normalSize and 32) or 16)
-    button_status.hover = x >= 10 and x <= 10 + ((show_icon and button_iconWitdh) or 0) + button_textWidth + button_offset and y >= 166 and y <= 166 + button_height
 end
 
 function love.keypressed(key, scancode)

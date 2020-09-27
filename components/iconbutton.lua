@@ -28,7 +28,7 @@ local function _material_buttons_iconbutton (icon, x, y, ripple, inactive, hover
     -- Checks optional args
     local _ripple_x = (ripple and ripple.x) or _radius
     local _ripple_y = (ripple and ripple.y) or _radius
-    local _ripple_radius = (ripple and ripple.radius) or 0
+    local _ripple_radius = math.min((ripple and ripple.radius) or 0, 1)
     inactive = inactive or false
     hover = hover or false
     focused = focused or false
@@ -47,11 +47,13 @@ local function _material_buttons_iconbutton (icon, x, y, ripple, inactive, hover
     love.graphics.circle("fill", x + _radius, y + _radius, _radius)
 
     -- Draws the ripple
-    love.graphics.stencil(_material_buttons_iconbutton_stencil(x + _radius, y + _radius, _radius))
-    love.graphics.setStencilTest("greater", 0)
-    love.graphics.setColor(_rippleColor)
-    love.graphics.circle("fill", x + _ripple_x, y + _ripple_y, _ripple_radius * _radius * 2)
-    love.graphics.setStencilTest()
+    if _ripple_radius > 0 then
+        love.graphics.stencil(_material_buttons_iconbutton_stencil(x + _radius, y + _radius, _radius))
+        love.graphics.setStencilTest("greater", 0)
+        love.graphics.setColor(_rippleColor)
+        love.graphics.circle("fill", x + _ripple_x, y + _ripple_y, _ripple_radius * _radius * 2)
+        love.graphics.setStencilTest()
+    end
 
     -- Draws the icon
     if inactive then love.graphics.setColor(_inactiveColor)

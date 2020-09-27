@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Mäterial</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/material.buttons.html">material.buttons</a></li>
+  <li><a href="../modules/material.icons.html">material.icons</a></li>
+  <li><strong>material.inputs</strong></li>
+  <li><a href="../modules/material.texts.html">material.texts</a></li>
+  <li><a href="../modules/material.theme.html">material.theme</a></li>
+  <li><a href="../modules/material.html">material</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/extending_library.md.html">extending_library</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/buttons.lua.html">buttons.lua</a></li>
+  <li><a href="../examples/inputs.lua.html">inputs.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>material.inputs</code></h1>
+<p>Draws inputs as text input, checkbox, radio buttons, ...</p>
+<p> using material theme</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#getSize">getSize ()</a></td>
+	<td class="summary">Gets the size of the inputs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getPixelSize">getPixelSize ()</a></td>
+	<td class="summary">Gets the size of the inputs in pixels</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setSize">setSize (size)</a></td>
+	<td class="summary">Sets the size of the inputs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#checkbox">checkbox (x, y[, ripple[, checked[, indeterminate[, inactive[, hover[, focused]]]]]])</a></td>
+	<td class="summary">Draws a checkbox</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#radio">radio (x, y[, ripple[, selected[, inactive[, hover[, focused]]]]])</a></td>
+	<td class="summary">Draws a radio button</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "getSize"></a>
+    <strong>getSize ()</strong>
+    </dt>
+    <dd>
+    Gets the size of the inputs
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the size of the input as label
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getPixelSize"></a>
+    <strong>getPixelSize ()</strong>
+    </dt>
+    <dd>
+    Gets the size of the inputs in pixels
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The size of the inputs in pixel
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setSize"></a>
+    <strong>setSize (size)</strong>
+    </dt>
+    <dd>
+    Sets the size of the inputs
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         The size of the inputs: "normal" for normal size and "small" for condensed size
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "checkbox"></a>
+    <strong>checkbox (x, y[, ripple[, checked[, indeterminate[, inactive[, hover[, focused]]]]]])</strong>
+    </dt>
+    <dd>
+    Draws a checkbox
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         The position in x-axis
+        </li>
+        <li><span class="parameter">y</span>
+         The position in y-axis
+        </li>
+        <li><span class="parameter">ripple</span>
+         The radius of the ripple
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">checked</span>
+         true if is checked and false otherwise
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">indeterminate</span>
+         true if the checkbox is indeterminate (the checked value is omited)
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">inactive</span>
+         Shows the button as disabled
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">hover</span>
+         Shows the button as hover
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">focused</span>
+         Shows the outlined of the focused button
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "radio"></a>
+    <strong>radio (x, y[, ripple[, selected[, inactive[, hover[, focused]]]]])</strong>
+    </dt>
+    <dd>
+    Draws a radio button
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         The position in x-axis
+        </li>
+        <li><span class="parameter">y</span>
+         The position in y-axis
+        </li>
+        <li><span class="parameter">ripple</span>
+         The radius of the ripple
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">selected</span>
+         true if is selected and false otherwise
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">inactive</span>
+         Shows the button as disabled
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">hover</span>
+         Shows the button as hover
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">focused</span>
+         Shows the outlined of the focused button
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-09-27 20:35:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
