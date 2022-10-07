@@ -1,0 +1,669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Mäterial</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>material.theme</strong></li>
+  <li><a href="../modules/material.html">material</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/EXTENDING_LIBRARY.md.html">EXTENDING_LIBRARY</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>material.theme</code></h1>
+<p>Theme manipulation</p>
+<p>
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#loadSchemes">loadSchemes (path)</a></td>
+	<td class="summary">Load a theme schemes</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setDefaultScheme">setDefaultScheme ()</a></td>
+	<td class="summary">Set the default scheme</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSchemes">getSchemes (light)</a></td>
+	<td class="summary">Gets the current color schemes</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setLight">setLight ()</a></td>
+	<td class="summary">Select the default theme as light</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setDark">setDark ()</a></td>
+	<td class="summary">Select the default theme as dark</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getPrimary">getPrimary ()</a></td>
+	<td class="summary">Get the primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getPrimaryContainer">getPrimaryContainer ()</a></td>
+	<td class="summary">Get the primary container color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnPrimary">getOnPrimary ()</a></td>
+	<td class="summary">Get the color when drawn on top of the primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnPrimaryContainer">getOnPrimaryContainer ()</a></td>
+	<td class="summary">Get the color when drawn on top of the primary container color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getPrimary">getPrimary ()</a></td>
+	<td class="summary">Get the inverse primary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSecondary">getSecondary ()</a></td>
+	<td class="summary">Get the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSecondaryContainer">getSecondaryContainer ()</a></td>
+	<td class="summary">Get the secondary container color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnSecondary">getOnSecondary ()</a></td>
+	<td class="summary">Get the color when drawn on top of the secondary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSecondary">getSecondary ()</a></td>
+	<td class="summary">Get the color when drawn on top of the secondary container color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getTertiary">getTertiary ()</a></td>
+	<td class="summary">Get the tertiary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getTertiaryContainer">getTertiaryContainer ()</a></td>
+	<td class="summary">Get the tertiary container color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnTertiary">getOnTertiary ()</a></td>
+	<td class="summary">Get the color when drawn on top of the tertiary color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getTertiary">getTertiary ()</a></td>
+	<td class="summary">Get the color when drawn on top of the tertiary container color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSurface">getSurface ()</a></td>
+	<td class="summary">Get the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSurfaceTint">getSurfaceTint ()</a></td>
+	<td class="summary">Get the surface tint color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getSurfaceVariant">getSurfaceVariant ()</a></td>
+	<td class="summary">Get the surface variant color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getInverseSurface">getInverseSurface ()</a></td>
+	<td class="summary">Get the inverse surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnSurface">getOnSurface ()</a></td>
+	<td class="summary">Get the color when drawn on top of the surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnSurfaceVariant">getOnSurfaceVariant ()</a></td>
+	<td class="summary">Get the color when drawn on top of the surface variant color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnInverseSurface">getOnInverseSurface ()</a></td>
+	<td class="summary">Get the color when drawn on top of the inverse surface color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getBackground">getBackground ()</a></td>
+	<td class="summary">Get the background color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnBackground">getOnBackground ()</a></td>
+	<td class="summary">Get the color when drawn on top of the the background color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getError">getError ()</a></td>
+	<td class="summary">Get the error color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getErrorContainer">getErrorContainer ()</a></td>
+	<td class="summary">Get the error container color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnError">getOnError ()</a></td>
+	<td class="summary">Get the color when drawn on top of the error color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOnErrorContainer">getOnErrorContainer ()</a></td>
+	<td class="summary">Get the color when drawn on top of the error container color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getOutline">getOutline ()</a></td>
+	<td class="summary">Get the outline color</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "loadSchemes"></a>
+    <strong>loadSchemes (path)</strong>
+    </dt>
+    <dd>
+    Load a theme schemes
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         string with the path of theme schemes
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setDefaultScheme"></a>
+    <strong>setDefaultScheme ()</strong>
+    </dt>
+    <dd>
+    Set the default scheme
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSchemes"></a>
+    <strong>getSchemes (light)</strong>
+    </dt>
+    <dd>
+    Gets the current color schemes
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">light</span>
+         whether get the light or dark schemes
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setLight"></a>
+    <strong>setLight ()</strong>
+    </dt>
+    <dd>
+    Select the default theme as light
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setDark"></a>
+    <strong>setDark ()</strong>
+    </dt>
+    <dd>
+    Select the default theme as dark
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getPrimary"></a>
+    <strong>getPrimary ()</strong>
+    </dt>
+    <dd>
+    Get the primary color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getPrimaryContainer"></a>
+    <strong>getPrimaryContainer ()</strong>
+    </dt>
+    <dd>
+    Get the primary container color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnPrimary"></a>
+    <strong>getOnPrimary ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the primary color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnPrimaryContainer"></a>
+    <strong>getOnPrimaryContainer ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the primary container color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getPrimary"></a>
+    <strong>getPrimary ()</strong>
+    </dt>
+    <dd>
+    Get the inverse primary color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSecondary"></a>
+    <strong>getSecondary ()</strong>
+    </dt>
+    <dd>
+    Get the secondary color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSecondaryContainer"></a>
+    <strong>getSecondaryContainer ()</strong>
+    </dt>
+    <dd>
+    Get the secondary container color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnSecondary"></a>
+    <strong>getOnSecondary ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the secondary color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSecondary"></a>
+    <strong>getSecondary ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the secondary container color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getTertiary"></a>
+    <strong>getTertiary ()</strong>
+    </dt>
+    <dd>
+    Get the tertiary color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getTertiaryContainer"></a>
+    <strong>getTertiaryContainer ()</strong>
+    </dt>
+    <dd>
+    Get the tertiary container color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnTertiary"></a>
+    <strong>getOnTertiary ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the tertiary color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getTertiary"></a>
+    <strong>getTertiary ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the tertiary container color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSurface"></a>
+    <strong>getSurface ()</strong>
+    </dt>
+    <dd>
+    Get the surface color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSurfaceTint"></a>
+    <strong>getSurfaceTint ()</strong>
+    </dt>
+    <dd>
+    Get the surface tint color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getSurfaceVariant"></a>
+    <strong>getSurfaceVariant ()</strong>
+    </dt>
+    <dd>
+    Get the surface variant color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getInverseSurface"></a>
+    <strong>getInverseSurface ()</strong>
+    </dt>
+    <dd>
+    Get the inverse surface color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnSurface"></a>
+    <strong>getOnSurface ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the surface color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnSurfaceVariant"></a>
+    <strong>getOnSurfaceVariant ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the surface variant color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnInverseSurface"></a>
+    <strong>getOnInverseSurface ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the inverse surface color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getBackground"></a>
+    <strong>getBackground ()</strong>
+    </dt>
+    <dd>
+    Get the background color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnBackground"></a>
+    <strong>getOnBackground ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the the background color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getError"></a>
+    <strong>getError ()</strong>
+    </dt>
+    <dd>
+    Get the error color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getErrorContainer"></a>
+    <strong>getErrorContainer ()</strong>
+    </dt>
+    <dd>
+    Get the error container color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnError"></a>
+    <strong>getOnError ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the error color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOnErrorContainer"></a>
+    <strong>getOnErrorContainer ()</strong>
+    </dt>
+    <dd>
+    Get the color when drawn on top of the error container color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getOutline"></a>
+    <strong>getOutline ()</strong>
+    </dt>
+    <dd>
+    Get the outline color
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-07 17:21:48 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
