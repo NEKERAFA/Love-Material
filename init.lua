@@ -58,14 +58,11 @@ _material._CORE = _material._BASE .. ".core"
 -- Gets the constants require path
 _material._CONSTANTS = _material._BASE .. ".constants"
 
--- Gets the components require path
-_material._COMPONENTS = _material._BASE .. ".components"
-
--- Gets the extension require path
-_material._EXTENSIONS = _material._BASE .. ".extensions"
-
 -- Gets the assets directory
 _material._ASSETS = string.gsub(_material._BASE, "%.", "/") .. "/assets"
+
+-- Gets the assets theme requiere path
+_material._ASSETS_THEME = _material._BASE .. ".assets.theme"
 
 ---
 -- Loads a component or some components into material library
@@ -79,32 +76,5 @@ end
 
 -- Loads theme module
 _material.loadComponents(_material._CORE .. ".theme")
-
--- Loads icon module
-_material.loadComponents(_material._CORE .. ".icons")
-
--- Loads texts module
-_material.loadComponents(_material._CORE .. ".texts")
-
--- Loads buttons module
-_material.loadComponents(_material._CORE .. ".buttons")
-
--- Loads inputs module
-_material.loadComponents(_material._CORE .. ".inputs")
-
--- Load shadow module
-local _material_shadow = require (_material._CORE .. ".shadow")
-
----
--- Creates a texture with a blur effect
--- @function shadow
--- @param width The width of the texture
--- @param height The height of the texture
--- @param radius The radius of blur in pixels
--- @param onDraw The function that draws the graphics resources to blur
-_material.shadow = function (width, height, radius, onDraw)
-    local callback = _material_shadow(_material)
-    return callback(width, height, radius, onDraw)
-end
 
 return _material

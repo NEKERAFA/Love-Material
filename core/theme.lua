@@ -2,435 +2,279 @@
 -- Theme manipulation
 -- @module material.theme
 
-return function ( material )
+local theme = function(material)
+    local __material_theme_light = true
 
--- Loads color palette
-local _material_theme_colorpalette = require (material._CONSTANTS .. ".colors")
+    -- Load color palette (legacy purpose)
+    local __material_theme_palette = require(material._CONSTANTS .. ".colors")
 
--- Sets color theme
-local _material_theme_colorprimary          = _material_theme_colorpalette["blue"]["500"]
-local _material_theme_colorprimaryvariant   = _material_theme_colorpalette["blue"]["700"]
-local _material_theme_coloronprimary        = _material_theme_colorpalette["white"]
-local _material_theme_colorsecondary        = _material_theme_colorpalette["teal"]["300"]
-local _material_theme_colorsecondaryvariant = _material_theme_colorpalette["teal"]["500"]
-local _material_theme_coloronsecondary      = _material_theme_colorpalette["black"]
-local _material_theme_colorbackground       = _material_theme_colorpalette["white"]
-local _material_theme_coloronbackground     = _material_theme_colorpalette["black"]
-local _material_theme_colorsurface          = _material_theme_colorpalette["white"]
-local _material_theme_coloronsurface        = _material_theme_colorpalette["black"]
-local _material_theme_colorerror            = _material_theme_colorpalette["red"]["900"]
-local _material_theme_coloronerror          = _material_theme_colorpalette["white"]
-local _material_theme_colorfocused          = _material_theme_colorpalette["blue"]["300"]
-local _material_theme_opacityhover          = 0.87
-local _material_theme_opacityactive         = 0.54
-local _material_theme_opacityinactive       = 0.38
-local _material_theme_opacityripple         = 0.2
+    -- Set color theme variables
+    local __material_theme_default_colors = require(material._ASSETS_THEME .. ".schemes")
+    local __material_theme_colors = nil
 
----
--- Sets the primary color
--- @function setPrimary
--- @param color A color table
-local function _material_theme_setprimary ( color )
-    _material_theme_colorprimary = color
+    ---
+    -- Load a theme schemes
+    -- @function loadSchemes
+    -- @param path string with the path of theme schemes
+    local __material_theme_loadschemes = function(path)
+        __material_theme_colors = assert(loadfile(path))()
+    end
+
+    ---
+    -- Set the default scheme
+    -- @function setDefaultScheme
+    local __material_theme_setdefaultschemes = function()
+        __material_theme_colors = nil
+    end
+
+    ---
+    -- Gets the current color schemes
+    -- @function getSchemes
+    -- @param light whether get the light or dark schemes
+    local __material_theme_getschemes = function(light)
+        return (__material_theme_colors or __material_theme_default_colors)[light and 'light' or 'dark']
+    end
+
+    ---
+    -- Select the default theme as light
+    -- @function setLight
+    local __material_theme_setlight = function ()
+        __material_theme_light = true
+    end
+
+    ---
+    -- Select the default theme as dark
+    -- @function setDark
+    local __material_theme_setdark = function ()
+        __material_theme_light = false
+    end
+
+    ---
+    -- Get the primary color
+    -- @function getPrimary
+    local __material_theme_getprimary = function ()
+        return { unpack(__material_theme_getschemes(__material_theme_light).primary) }
+    end
+
+    ---
+    -- Get the primary container color
+    -- @function getPrimaryContainer
+    local __material_theme_getprimarycontainer = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).primary_container) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the primary color
+    -- @function getOnPrimary
+    local __material_theme_getonprimary = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_primary) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the primary container color
+    -- @function getOnPrimaryContainer
+    local __material_theme_getonprimarycontainer = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_primary_container) }
+    end
+
+    ---
+    -- Get the inverse primary color
+    -- @function getPrimary
+    local __material_theme_getinverseprimary = function ()
+        return { unpack(__material_theme_getschemes(__material_theme_light).inverse_primary) }
+    end
+
+    ---
+    -- Get the secondary color
+    -- @function getSecondary
+    local __material_theme_getsecondary = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).secondary) }
+    end
+
+    ---
+    -- Get the secondary container color
+    -- @function getSecondaryContainer
+    local __material_theme_getsecondarycontainer = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).secondary_container) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the secondary color
+    -- @function getOnSecondary
+    local __material_theme_getonsecondary = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_secondary) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the secondary container color
+    -- @function getSecondary
+    local __material_theme_getonsecondarycontainer = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_secondary_container) }
+    end
+
+    ---
+    -- Get the tertiary color
+    -- @function getTertiary
+    local __material_theme_gettertiary = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).tertiary) }
+    end
+
+    ---
+    -- Get the tertiary container color
+    -- @function getTertiaryContainer
+    local __material_theme_gettertiarycontainer = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).tertiary_container) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the tertiary color
+    -- @function getOnTertiary
+    local __material_theme_getontertiary = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_tertiary) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the tertiary container color
+    -- @function getTertiary
+    local __material_theme_getontertiarycontainer = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_tertiary_container) }
+    end
+
+    ---
+    -- Get the surface color
+    -- @function getSurface
+    local __material_theme_getsurface = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).surface) }
+    end
+
+    ---
+    -- Get the surface tint color
+    -- @function getSurfaceTint
+    local __material_theme_getsurfacetint = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).surface_tint) }
+    end
+
+    ---
+    -- Get the surface variant color
+    -- @function getSurfaceVariant
+    local __material_theme_getsurfacevariant = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).surface_variant) }
+    end
+
+    ---
+    -- Get the inverse surface color
+    -- @function getInverseSurface
+    local __material_theme_getinversesurface = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).inverse_surface) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the surface color
+    -- @function getOnSurface
+    local __material_theme_getonsurface = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_surface) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the surface variant color
+    -- @function getOnSurfaceVariant
+    local __material_theme_getonsurfacevariant = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_surface_variant) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the inverse surface color
+    -- @function getOnInverseSurface
+    local __material_theme_getoninversesurface = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_inverse_surface) }
+    end
+
+    ---
+    -- Get the background color
+    -- @function getBackground
+    local __material_theme_getbackground = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).background) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the the background color
+    -- @function getOnBackground
+    local __material_theme_getonbackground = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_background) }
+    end
+
+    ---
+    -- Get the error color
+    -- @function getError
+    local __material_theme_geterror = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).error) }
+    end
+
+    ---
+    -- Get the error container color
+    -- @function getErrorContainer
+    local __material_theme_geterrorcontainer = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).error_container) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the error color
+    -- @function getOnError
+    local __material_theme_getonerror = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_error) }
+    end
+
+    ---
+    -- Get the color when drawn on top of the error container color
+    -- @function getOnErrorContainer
+    local __material_theme_getonerrorcontainer = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).on_error_container) }
+    end
+
+    ---
+    -- Get the outline color
+    -- @function getOutline
+    local __material_theme_getoutline = function()
+        return { unpack(__material_theme_getschemes(__material_theme_light).outline) }
+    end
+
+    return {
+        palette = __material_theme_palette,
+        colors = __material_theme_colors,
+
+        loadSchemes = __material_theme_loadschemes,
+        setDefaultSchemes = __material_theme_setdefaultschemes,
+        getSchemes = __material_theme_getschemes,
+        setLight = __material_theme_setlight,
+        setDark = __material_theme_setdark,
+        getPrimary = __material_theme_getprimary,
+        getPrimaryContainer = __material_theme_getprimarycontainer,
+        getOnPrimary = __material_theme_getonprimary,
+        getOnPrimaryContainer = __material_theme_getonprimarycontainer,
+        getInversePrimary = __material_theme_getinverseprimary,
+        getSecondary = __material_theme_getsecondary,
+        getSecondaryContainer = __material_theme_getsecondarycontainer,
+        getOnSecondary = __material_theme_getonsecondary,
+        getOnSecondaryContainer = __material_theme_getonsecondarycontainer,
+        getTertiary = __material_theme_gettertiary,
+        getTertiaryContainer = __material_theme_gettertiarycontainer,
+        getOnTertiary = __material_theme_getontertiary,
+        getOnTertiaryContainer = __material_theme_getontertiarycontainer,
+        getSurface = __material_theme_getsurface,
+        getSurfaceTint = __material_theme_getsurfacetint,
+        getSurfaceVariant = __material_theme_getsurfacevariant,
+        getInverseSurface = __material_theme_getinversesurface,
+        getOnSurface = __material_theme_getonsurface,
+        getOnSurfaceVariant = __material_theme_getonsurfacevariant,
+        getOnInverseSurface = __material_theme_getoninversesurface,
+        getBackground = __material_theme_getbackground,
+        getOnBackground = __material_theme_getonbackground,
+        getError = __material_theme_geterror,
+        getErrorContainer = __material_theme_geterrorcontainer,
+        getOnError = __material_theme_getonerror,
+        getOnErrorContainer = __material_theme_getonerrorcontainer,
+        getOutline = __material_theme_getoutline
+    }
 end
 
----
--- Gets the tonal variation of the primary color
--- @function getPrimary
--- @return The current color
-local function _material_theme_getprimary ()
-    return { unpack(_material_theme_colorprimary) }
-end
-
----
--- Sets the tonal variation of the primary color
--- @function setPrimaryVariant
--- @param color A color table
-local function _material_theme_setprimaryvariant ( color )
-    _material_theme_colorprimaryvariant = color
-end
-
----
--- Gets the primary color
--- @function getPrimaryVariant
--- @return The current color
-local function _material_theme_getprimaryvariant ()
-    return { unpack(_material_theme_colorprimaryvariant) }
-end
-
----
--- Sets the color when drawn on top of the primary color
--- @function setOnPrimary
--- @param color A color table
-local function _material_theme_setonprimary ( color )
-    _material_theme_coloronprimary = color
-end
-
----
--- Sets the color when drawn on top of the primary color
--- @function getOnPrimary
--- @return The current color
-local function _material_theme_getonprimary ()
-    return { unpack(_material_theme_coloronprimary) }
-end
-
----
--- Sets the secondary color
--- @function setSecondary
--- @param color A color table
-local function _material_theme_setsecondary ( color )
-    _material_theme_colorsecondary = color
-end
-
----
--- Gets the secondary color
--- @function getSecondary
--- @return The current color
-local function _material_theme_getsecondary ()
-    return { unpack(_material_theme_colorsecondary) }
-end
-
----
--- Sets the color when drawn ripple on the secondary color
--- @function getRippleSecondary
--- @param color A color table
-local function _material_theme_getripplesecondary ( color )
-    local color = _material_theme_getsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityripple
-    return color
-end
-
----
--- Gets the color when drawn hover items on the secondary color
--- @function getHoverSecondary
--- @return The current color
-local function _material_theme_gethoversecondary ()
-    local color = _material_theme_getsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityhover
-    return color
-end
-
----
--- Gets the color when drawn active items on the secondary color
--- @function getActiveSecondary
--- @return The current color
-local function _material_theme_getactivesecondary ()
-    local color = _material_theme_getsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityactive
-    return color
-end
-
----
--- Gets the color when drawn inactive items on the secondary color
--- @function getInactiveSecondary
--- @return The current color
-local function _material_theme_getinactivesecondary ()
-    local color = _material_theme_getsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityinactive
-    return color
-end
-
----
--- Sets the tonal variation of the secondary color
--- @function setSecondaryVariant
--- @param color A color table
-local function _material_theme_setsecondaryvariant ( color )
-    _material_theme_colorsecondaryvariant = color
-end
-
----
--- Gets the tonal variation of the secondary color
--- @function getSecondaryVariant
--- @return The current color
-local function _material_theme_getsecondaryvariant ()
-    return { unpack(_material_theme_colorsecondaryvariant) }
-end
-
----
--- Sets the color when drawn on top of the secondary color
--- @function setOnSecondary
--- @param color A color table
-local function _material_theme_setonsecondary ( color )
-    _material_theme_coloronsecondary = color
-end
-
----
--- Gets the color when drawn on top of the secondary color
--- @function getOnSecondary
--- @return The current color
-local function _material_theme_getonsecondary ()
-    return { unpack(_material_theme_coloronsecondary) }
-end
-
----
--- Sets the color when drawn ripple on secondary color
--- @function getRippleOnSecondary
--- @param color A color table
-local function _material_theme_getrippleonsecondary ( color )
-    local color = _material_theme_getonsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityripple
-    return color
-end
-
----
--- Gets the color when drawn hover items on top of the secondary colorcolor
--- @function getHoverOnSecondary
--- @return The current color
-local function _material_theme_gethoveronsecondary ()
-    local color = _material_theme_getonsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityhover
-    return color
-end
-
----
--- Gets the color when drawn active items on top of the secondary colorcolor
--- @function getActiveOnSecondary
--- @return The current color
-local function _material_theme_getactiveonsecondary ()
-    local color = _material_theme_getonsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityactive
-    return color
-end
-
----
--- Gets the color when drawn inactive items on top of the secondary colorcolor
--- @function getInactiveOnSecondary
--- @return The current color
-local function _material_theme_getinactiveonsecondary ()
-    local color = _material_theme_getonsecondary()
-    color[4] = (color[4] or 1) * _material_theme_opacityinactive
-    return color
-end
-
----
--- Sets the background color appears behind scrollable contentcolor
--- @function setBackground
--- @param color A color table
-local function _material_theme_setbackground ( color )
-    _material_theme_colorbackground = color
-end
-
----
--- Gets the background color appears behind scrollable content
--- @function getBackground
--- @return The current color
-local function _material_theme_getbackground ()
-    return { unpack(_material_theme_colorbackground) }
-end
-
----
--- Sets the color when drawn on top of the background color
--- @function setOnBackground
--- @param color A color table
-local function _material_theme_setonbackground ( color )
-    _material_theme_coloronbackground = color
-end
-
----
--- Gets the color when drawn on top of the background color
--- @function getOnBackground
--- @return The current color
-local function _material_theme_getonbackground ()
-    return { unpack(_material_theme_coloronbackground) }
-end
-
----
--- Sets the surface color
--- @function setSurface
--- @param color A color table
-local function _material_theme_setsurface ( color )
-    _material_theme_colorsurface = color
-end
-
----
--- Gets the surface color
--- @function getSurface
--- @return The current color
-local function _material_theme_getsurface ()
-    return { unpack(_material_theme_colorsurface) }
-end
-
----
--- Sets the color when drawn on top of the surface color
--- @function setOnSurface
--- @param color A color table
-local function _material_theme_setonsurface ( color )
-    _material_theme_coloronsurface = color
-end
-
----
--- Gets the color when drawn on top of the surface color
--- @function getOnSurface
--- @return The current color
-local function _material_theme_getonsurface ()
-    return { unpack(_material_theme_coloronsurface) }
-end
-
----
--- Sets the color when drawn ripple on surface color
--- @function getRippleOnSurface
--- @param color A color table
-local function _material_theme_getrippleonsurface ( color )
-    local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityripple
-    return color
-end
-
----
--- Gets the color when drawn hover items on top of the surface color
--- @function getHoverOnSurface
--- @return The current color
-local function _material_theme_gethoveronsurface ()
-    local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityhover
-    return color
-end
-
----
--- Gets the color when drawn active items on top of the surface color
--- @function getActiveOnSurface
--- @return The current color
-local function _material_theme_getactiveonsurface ()
-    local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityactive
-    return color
-end
-
----
--- Gets the color when drawn inactive items on top of the surface color
--- @function getInactiveOnSurface
--- @return The current color
-local function _material_theme_getinactiveonsurface ()
-    local color = _material_theme_getonsurface()
-    color[4] = (color[4] or 1) * _material_theme_opacityinactive
-    return color
-end
-
----
--- Sets the error color
--- @function setError
--- @param color A color table
-local function _material_theme_seterror ( color )
-    _material_theme_colorerror = color
-end
-
----
--- Gets the error color
--- @function getError
--- @return The current color
-local function _material_theme_geterror ()
-    return { unpack(_material_theme_colorerror) }
-end
-
----
--- Sets the color when drawn on top of the error color
--- @function setOnError
--- @param color A color table
-local function _material_theme_setonerror ( color )
-    _material_theme_coloronerror = color
-end
-
----
--- Gets the color when drawn on top of the error color
--- @function getOnError
--- @return The current color
-local function _material_theme_getonerror ()
-    return { unpack(_material_theme_coloronerror) }
-end
-
----
--- Sets the opacity when drawn on focused items
--- @function setFocused
--- @param color A color table
-local function _material_theme_setfocused ( color )
-    _material_theme_colorfocused = color
-end
-
----
--- Gets the color when drawn on focused items
--- @function getFocused
--- @return The current color
-local function _material_theme_getfocused ()
-    return { unpack(_material_theme_colorfocused) }
-end
-
----
--- Sets the opacity when drawn on hover items
--- @function setHover
--- @param opacity A opacity value
-local function _material_theme_sethover ( opacity )
-    _material_theme_opacityhover = opacity
-end
-
----
--- Sets the opacity when drawn on active items
--- @function setActive
--- @param opacity A opacity value
-local function _material_theme_setactive ( opacity )
-    _material_theme_opacityactive = opacity
-end
-
----
--- Sets the opacity when drawn on inactive items
--- @function setInactive
--- @param opacity A opacity value
-local function _material_theme_setinactive ( opacity )
-    _material_theme_opacityinactive = opacity
-end
-
----
--- Sets the opacity of the ripple
--- @function setRipple
--- @param opacity A opacity value
-local function _material_theme_setripple ( opacity )
-    _material_theme_opacityripple = opacity
-end
-
-return {
-    palette = _material_theme_colorpalette,
-
-    setPrimary             = _material_theme_setprimary,
-    getPrimary             = _material_theme_getprimary,
-    setPrimaryVariant      = _material_theme_setprimaryvariant,
-    getPrimaryVariant      = _material_theme_getprimaryvariant,
-    setOnPrimary           = _material_theme_setonprimary,
-    getOnPrimary           = _material_theme_getonprimary,
-    setSecondary           = _material_theme_setsecondary,
-    getSecondary           = _material_theme_getsecondary,
-    getRippleSecondary     = _material_theme_getripplesecondary,
-    getHoverSecondary      = _material_theme_gethoversecondary,
-    getActiveSecondary     = _material_theme_getactivesecondary,
-    getInactiveSecondary   = _material_theme_getinactivesecondary,
-    setSecondaryVariant    = _material_theme_setsecondaryvariant,
-    getSecondaryVariant    = _material_theme_getsecondaryvariant,
-    setOnSecondary         = _material_theme_setonsecondary,
-    getOnSecondary         = _material_theme_getonsecondary,
-    getRippleOnSecondary   = _material_theme_getrippleonsecondary,
-    getHoverOnSecondary    = _material_theme_gethoveronsecondary,
-    getActiveOnSecondary   = _material_theme_getactiveonsecondary,
-    getInactiveOnSecondary = _material_theme_getinactiveonsecondary,
-    setBackground          = _material_theme_setbackground,
-    getBackground          = _material_theme_getbackground,
-    setOnBackground        = _material_theme_setonbackground,
-    getOnBackground        = _material_theme_getonbackground,
-    setSurface             = _material_theme_setsurface,
-    getSurface             = _material_theme_getsurface,
-    setOnSurface           = _material_theme_setonsurface,
-    getOnSurface           = _material_theme_getonsurface,
-    getRippleOnSurface     = _material_theme_getrippleonsurface,
-    getHoverOnSurface      = _material_theme_gethoveronsurface,
-    getActiveOnSurface     = _material_theme_getactiveonsurface,
-    getInactiveOnSurface   = _material_theme_getinactiveonsurface,
-    setError               = _material_theme_seterror,
-    getError               = _material_theme_geterror,
-    setOnError             = _material_theme_setonerror,
-    getOnError             = _material_theme_getonerror,
-    setFocused             = _material_theme_setfocused,
-    getFocused             = _material_theme_getfocused,
-    setHover               = _material_theme_sethover,
-    setActive              = _material_theme_setactive,
-    setInactive            = _material_theme_setinactive,
-    setRipple              = _material_theme_setripple,
-}
-
-end
+return theme
