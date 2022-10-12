@@ -58,10 +58,16 @@ _material._CORE = _material._BASE .. ".core"
 -- Gets the constants require path
 _material._CONSTANTS = _material._BASE .. ".constants"
 
+-- Gets the components require path
+_material._COMPONENTS = _material._BASE .. ".components"
+
+-- Gets the utils require path
+_material._UTILS = _material._BASE .. ".utils"
+
 -- Gets the assets directory
 _material._ASSETS = string.gsub(_material._BASE, "%.", "/") .. "/assets"
 
--- Gets the assets theme requiere path
+-- Gets the assets default theme require path
 _material._ASSETS_THEME = _material._BASE .. ".assets.theme"
 
 ---
@@ -76,5 +82,8 @@ end
 
 -- Loads theme module
 _material.loadComponents(_material._CORE .. ".theme")
+
+-- Loads typography module
+_material.loadComponents(_material._CORE .. ".typography")
 
 return _material
