@@ -26,7 +26,8 @@ local color_scheme = {
         error_container = {0.98, 0.87, 0.86},
         on_error = {1, 1, 1},
         on_error_container = {0.25, 0.05, 0.04},
-        outline = {0.47, 0.45, 0.49}
+        outline = {0.47, 0.45, 0.49},
+        shadow = {0, 0, 0}
     },
     dark = {
         primary = {},
@@ -55,7 +56,8 @@ local color_scheme = {
         error_container = {},
         on_error = {},
         on_error_container = {},
-        outline = {}
+        outline = {},
+        shadow = {}
     },
 }
 

@@ -86,4 +86,10 @@ _material.loadComponents(_material._CORE .. ".theme")
 -- Loads typography module
 _material.loadComponents(_material._CORE .. ".typography")
 
+-- Loads buttons module
+_material.loadComponents(_material._CORE .. ".buttons")
+
+-- Load shadow module
+_material.loadComponents(_material._CORE .. ".shadow")
+
 return _material

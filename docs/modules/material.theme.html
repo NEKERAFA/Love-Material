@@ -38,7 +38,9 @@
 
 <h2>Modules</h2>
 <ul class="nowrap">
+  <li><a href="../modules/material.buttons.html">material.buttons</a></li>
   <li><strong>material.theme</strong></li>
+  <li><a href="../modules/material.typography.html">material.typography</a></li>
   <li><a href="../modules/material.html">material</a></li>
 </ul>
 <h2>Topics</h2>
@@ -53,22 +55,27 @@
 <h1>Module <code>material.theme</code></h1>
 <p>Theme manipulation</p>
 <p>
+
 </p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#loadSchemes">loadSchemes (path)</a></td>
-	<td class="summary">Load a theme schemes</td>
-	</tr>
-	<tr>
 	<td class="name" nowrap><a href="#setDefaultScheme">setDefaultScheme ()</a></td>
 	<td class="summary">Set the default scheme</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#getSchemes">getSchemes (light)</a></td>
+	<td class="name" nowrap><a href="#getColorSchemes">getColorSchemes (light)</a></td>
 	<td class="summary">Gets the current color schemes</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getFontSchemes">getFontSchemes ()</a></td>
+	<td class="summary">Gets the current font schemes</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#loadSchemes">loadSchemes (path)</a></td>
+	<td class="summary">Load a theme schemes</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#setLight">setLight ()</a></td>
@@ -186,6 +193,30 @@
 	<td class="name" nowrap><a href="#getOutline">getOutline ()</a></td>
 	<td class="summary">Get the outline color</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getShadow">getShadow ()</a></td>
+	<td class="summary">Get the shadow color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getDisplay">getDisplay (size)</a></td>
+	<td class="summary">Get the display font</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getHeadline">getHeadline (size)</a></td>
+	<td class="summary">Get the headline font</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getTitle">getTitle (size)</a></td>
+	<td class="summary">Get the title font</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getBody">getBody (size)</a></td>
+	<td class="summary">Get the body font</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getLabel">getLabel (size)</a></td>
+	<td class="summary">Get the label font</td>
+	</tr>
 </table>
 
 <br/>
@@ -195,26 +226,6 @@
     <h2 class="section-header "><a name="Functions"></a>Functions</h2>
 
     <dl class="function">
-    <dt>
-    <a name = "loadSchemes"></a>
-    <strong>loadSchemes (path)</strong>
-    </dt>
-    <dd>
-    Load a theme schemes
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">path</span>
-         string with the path of theme schemes
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
     <dt>
     <a name = "setDefaultScheme"></a>
     <strong>setDefaultScheme ()</strong>
@@ -230,8 +241,8 @@
 
 </dd>
     <dt>
-    <a name = "getSchemes"></a>
-    <strong>getSchemes (light)</strong>
+    <a name = "getColorSchemes"></a>
+    <strong>getColorSchemes (light)</strong>
     </dt>
     <dd>
     Gets the current color schemes
@@ -241,6 +252,40 @@
     <ul>
         <li><span class="parameter">light</span>
          whether get the light or dark schemes
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getFontSchemes"></a>
+    <strong>getFontSchemes ()</strong>
+    </dt>
+    <dd>
+    Gets the current font schemes
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "loadSchemes"></a>
+    <strong>loadSchemes (path)</strong>
+    </dt>
+    <dd>
+    Load a theme schemes
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         string with the path of theme schemes
         </li>
     </ul>
 
@@ -655,6 +700,120 @@
 
 
 </dd>
+    <dt>
+    <a name = "getShadow"></a>
+    <strong>getShadow ()</strong>
+    </dt>
+    <dd>
+    Get the shadow color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getDisplay"></a>
+    <strong>getDisplay (size)</strong>
+    </dt>
+    <dd>
+    Get the display font
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         "large", "medium" or "small"
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getHeadline"></a>
+    <strong>getHeadline (size)</strong>
+    </dt>
+    <dd>
+    Get the headline font
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         "large", "medium" or "small"
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getTitle"></a>
+    <strong>getTitle (size)</strong>
+    </dt>
+    <dd>
+    Get the title font
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         "large", "medium" or "small"
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getBody"></a>
+    <strong>getBody (size)</strong>
+    </dt>
+    <dd>
+    Get the body font
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         "large", "medium" or "small"
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getLabel"></a>
+    <strong>getLabel (size)</strong>
+    </dt>
+    <dd>
+    Get the label font
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         "large", "medium" or "small"
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
 </dl>
 
 
@@ -662,7 +821,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-07 17:21:48 </i>
+<i style="float:right;">Last updated 2022-10-22 15:53:51 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
