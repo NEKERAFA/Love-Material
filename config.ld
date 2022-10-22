@@ -5,7 +5,7 @@ Mäterial is an immediate mode UI library for [LÖVE](https://love2d.org) that u
 format='discount'
 file={'core', 'init.lua'}
 topics={'EXTENDING_LIBRARY.md'}
-examples={'examples/buttons/buttons.lua', 'examples/inputs/inputs.lua'}
+--examples={'examples/buttons/buttons.lua', 'examples/inputs/inputs.lua'}
 dir='docs'
 pretty='lxsh'
 style='!fixed'
